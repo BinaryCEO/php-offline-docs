@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+     
+  
+  <title>PHP: GnuPG Functions - Manual</title>
+
+      <link rel="stylesheet" type="text/css" href="/manual/en/fonts/Fira/fira.css" media="screen">
+      <link rel="stylesheet" type="text/css" href="/manual/en/fonts/Font-Awesome/css/fontello.css" media="screen">
+      <link rel="stylesheet" type="text/css" href="/manual/en/styles/theme-base.css" media="screen">
+      <link rel="stylesheet" type="text/css" href="/manual/en/styles/theme-medium.css" media="screen">
+  
+ <link rel="icon" type="image/svg+xml" sizes="any" href="https://www.php.net/favicon.svg?v=2">
+ <link rel="icon" type="image/png" sizes="196x196" href="https://www.php.net/favicon-196x196.png?v=2">
+ <link rel="icon" type="image/png" sizes="32x32" href="https://www.php.net/favicon-32x32.png?v=2">
+ <link rel="icon" type="image/png" sizes="16x16" href="https://www.php.net/favicon-16x16.png?v=2">
+ <link rel="shortcut icon" href="https://www.php.net/favicon.ico?v=2">
+
+ <link rel="search" type="application/opensearchdescription+xml" href="https://www.php.net/phpnetimprovedsearch.src" title="Add PHP.net search">
+ <link rel="alternate" type="application/atom+xml" href="https://www.php.net/releases/feed.php" title="PHP Release feed">
+ <link rel="alternate" type="application/atom+xml" href="https://www.php.net/feed.atom" title="PHP: Hypertext Preprocessor">
+
+ <link rel="canonical" href="https://www.php.net/manual/en/ref.gnupg.php">
+ <link rel="shorturl" href="https://www.php.net/gnupg">
+ <link rel="alternate" href="https://www.php.net/gnupg" hreflang="x-default">
+
+ <link rel="contents" href="https://www.php.net/manual/en/index.php">
+ <link rel="index" href="https://www.php.net/manual/en/book.gnupg.php">
+ <link rel="prev" href="https://www.php.net/manual/en/gnupg.examples-clearsign.php">
+ <link rel="next" href="https://www.php.net/manual/en/function.gnupg-adddecryptkey.php">
+
+ <link rel="alternate" href="https://www.php.net/manual/en/ref.gnupg.php" hreflang="en">
+ <link rel="alternate" href="https://www.php.net/manual/de/ref.gnupg.php" hreflang="de">
+ <link rel="alternate" href="https://www.php.net/manual/es/ref.gnupg.php" hreflang="es">
+ <link rel="alternate" href="https://www.php.net/manual/fr/ref.gnupg.php" hreflang="fr">
+ <link rel="alternate" href="https://www.php.net/manual/it/ref.gnupg.php" hreflang="it">
+ <link rel="alternate" href="https://www.php.net/manual/ja/ref.gnupg.php" hreflang="ja">
+ <link rel="alternate" href="https://www.php.net/manual/pt_BR/ref.gnupg.php" hreflang="pt_BR">
+ <link rel="alternate" href="https://www.php.net/manual/ru/ref.gnupg.php" hreflang="ru">
+ <link rel="alternate" href="https://www.php.net/manual/tr/ref.gnupg.php" hreflang="tr">
+ <link rel="alternate" href="https://www.php.net/manual/uk/ref.gnupg.php" hreflang="uk">
+ <link rel="alternate" href="https://www.php.net/manual/zh/ref.gnupg.php" hreflang="zh">
+
+<link rel="stylesheet" type="text/css" href="/manual/en/fonts/Fira/fira.css" media="screen">
+<link rel="stylesheet" type="text/css" href="/manual/en/fonts/Font-Awesome/css/fontello.css" media="screen">
+<link rel="stylesheet" type="text/css" href="/manual/en/styles/theme-base.css" media="screen">
+<link rel="stylesheet" type="text/css" href="/manual/en/styles/theme-medium.css" media="screen">
+
+
+ 
+
+<meta name="Description" content="GnuPG Functions" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@official_php" />
+<meta name="twitter:title" content="PHP: GnuPG Functions - Manual" />
+<meta name="twitter:description" content="GnuPG Functions" />
+<meta name="twitter:creator" content="@official_php" />
+<meta name="twitter:image:src" content="https://www.php.net/images/meta-image.png" />
+
+<meta itemprop="name" content="PHP: GnuPG Functions - Manual" />
+<meta itemprop="description" content="GnuPG Functions" />
+<meta itemprop="image" content="https://www.php.net/images/meta-image.png" />
+
+<meta property="og:image" content="https://www.php.net/images/meta-image.png" />
+<meta property="og:description" content="GnuPG Functions" />
+
+<link href="https://fosstodon.org/@php" rel="me" />
+<!-- Matomo -->
+<script>
+    var _paq = window._paq = window._paq || [];
+    /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+    _paq.push(["setDoNotTrack", true]);
+    _paq.push(["disableCookies"]);
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+        var u="https://analytics.php.net/";
+        _paq.push(['setTrackerUrl', u+'matomo.php']);
+        _paq.push(['setSiteId', '1']);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+    })();
+</script>
+<!-- End Matomo Code -->
+</head>
+<body class="docs ">
+
+<nav class="navbar navbar-fixed-top">
+  <div class="navbar__inner">
+    <a href="/" aria-label="PHP Home" class="navbar__brand">
+      <img
+        src="/images/logos/php-logo-white.svg"
+        aria-hidden="true"
+        width="80"
+        height="40"
+      >
+    </a>
+
+    <div
+      id="navbar__offcanvas"
+      tabindex="-1"
+      class="navbar__offcanvas"
+      aria-label="Menu"
+    >
+      <button
+        id="navbar__close-button"
+        class="navbar__icon-item navbar_icon-item--visually-aligned navbar__close-button"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg>
+      </button>
+
+      <ul class="navbar__nav">
+                            <li class="navbar__item">
+              <a
+                href="/downloads.php"
+                                class="navbar__link  "
+              >
+                                  Downloads                              </a>
+          </li>
+                            <li class="navbar__item">
+              <a
+                href="/docs.php"
+                aria-current="page"                class="navbar__link navbar__link--active "
+              >
+                                  Documentation                              </a>
+          </li>
+                            <li class="navbar__item">
+              <a
+                href="/get-involved.php"
+                                class="navbar__link  "
+              >
+                                  Get Involved                              </a>
+          </li>
+                            <li class="navbar__item">
+              <a
+                href="/support.php"
+                                class="navbar__link  "
+              >
+                                  Help                              </a>
+          </li>
+                            <li class="navbar__item">
+              <a
+                href="/releases/8.4/index.php"
+                                class="navbar__link  navbar__release"
+              >
+                                  <img src="/images/php8/logo_php8_4.svg" alt="PHP 8.4">
+                              </a>
+          </li>
+              </ul>
+    </div>
+
+    <div class="navbar__right">
+      
+      <!-- Desktop default search -->
+      <form
+        action="/manual-lookup.php"
+        class="navbar__search-form"
+      >
+        <label for="navbar__search-input" aria-label="Search docs">
+          <svg
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+  width="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="11" cy="11" r="8"></circle>
+  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+</svg>        </label>
+        <input
+          type="search"
+          name="pattern"
+          id="navbar__search-input"
+          class="navbar__search-input"
+          placeholder="Search docs"
+          accesskey="s"
+        >
+        <input type="hidden" name="scope" value="quickref">
+      </form>
+
+      <!-- Desktop encanced search -->
+      <button
+        id="navbar__search-button"
+        class="navbar__search-button"
+        hidden
+      >
+        <svg
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+  width="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="11" cy="11" r="8"></circle>
+  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+</svg>        Search docs
+      </button>
+
+      <!-- Mobile default items -->
+      <a
+        id="navbar__search-link"
+        href="/lookup-form.php"
+        aria-label="Search docs"
+        class="navbar__icon-item navbar__search-link"
+      >
+        <svg
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+  width="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="11" cy="11" r="8"></circle>
+  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+</svg>      </a>
+      <a
+        id="navbar__menu-link"
+        href="/menu.php"
+        aria-label="Menu"
+        class="navbar__icon-item navbar_icon-item--visually-aligned navbar_menu-link"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+  width="24"
+  viewBox="0 0 24 24"
+  fill="currentColor"
+>
+  <path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" />
+</svg>      </a>
+
+      <!-- Mobile enhanced items -->
+      <button
+        id="navbar__search-button-mobile"
+        aria-label="Search docs"
+        class="navbar__icon-item navbar__search-button-mobile"
+        hidden
+      >
+        <svg
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+  width="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="11" cy="11" r="8"></circle>
+  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+</svg>      </button>
+      <button
+        id="navbar__menu-button"
+        aria-label="Menu"
+        class="navbar__icon-item navbar_icon-item--visually-aligned"
+        hidden
+      >
+        <svg xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+  width="24"
+  viewBox="0 0 24 24"
+  fill="currentColor"
+>
+  <path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" />
+</svg>      </button>
+    </div>
+
+    <div
+      id="navbar__backdrop"
+      class="navbar__backdrop"
+    ></div>
+  </div>
+
+  <div id="flash-message"></div>
+</nav>
+<div class="headsup"><a href='/index.php#2025-09-25-3'>PHP 8.5.0 RC 1 available for testing</a></div>
+<nav id="trick"><div><dl>
+<dt><a href='/manual/en/getting-started.php'>Getting Started</a></dt>
+	<dd><a href='/manual/en/introduction.php'>Introduction</a></dd>
+	<dd><a href='/manual/en/tutorial.php'>A simple tutorial</a></dd>
+<dt><a href='/manual/en/langref.php'>Language Reference</a></dt>
+	<dd><a href='/manual/en/language.basic-syntax.php'>Basic syntax</a></dd>
+	<dd><a href='/manual/en/language.types.php'>Types</a></dd>
+	<dd><a href='/manual/en/language.variables.php'>Variables</a></dd>
+	<dd><a href='/manual/en/language.constants.php'>Constants</a></dd>
+	<dd><a href='/manual/en/language.expressions.php'>Expressions</a></dd>
+	<dd><a href='/manual/en/language.operators.php'>Operators</a></dd>
+	<dd><a href='/manual/en/language.control-structures.php'>Control Structures</a></dd>
+	<dd><a href='/manual/en/language.functions.php'>Functions</a></dd>
+	<dd><a href='/manual/en/language.oop5.php'>Classes and Objects</a></dd>
+	<dd><a href='/manual/en/language.namespaces.php'>Namespaces</a></dd>
+	<dd><a href='/manual/en/language.enumerations.php'>Enumerations</a></dd>
+	<dd><a href='/manual/en/language.errors.php'>Errors</a></dd>
+	<dd><a href='/manual/en/language.exceptions.php'>Exceptions</a></dd>
+	<dd><a href='/manual/en/language.fibers.php'>Fibers</a></dd>
+	<dd><a href='/manual/en/language.generators.php'>Generators</a></dd>
+	<dd><a href='/manual/en/language.attributes.php'>Attributes</a></dd>
+	<dd><a href='/manual/en/language.references.php'>References Explained</a></dd>
+	<dd><a href='/manual/en/reserved.variables.php'>Predefined Variables</a></dd>
+	<dd><a href='/manual/en/reserved.exceptions.php'>Predefined Exceptions</a></dd>
+	<dd><a href='/manual/en/reserved.interfaces.php'>Predefined Interfaces and Classes</a></dd>
+	<dd><a href='/manual/en/reserved.attributes.php'>Predefined Attributes</a></dd>
+	<dd><a href='/manual/en/context.php'>Context options and parameters</a></dd>
+	<dd><a href='/manual/en/wrappers.php'>Supported Protocols and Wrappers</a></dd>
+</dl>
+<dl>
+<dt><a href='/manual/en/security.php'>Security</a></dt>
+	<dd><a href='/manual/en/security.intro.php'>Introduction</a></dd>
+	<dd><a href='/manual/en/security.general.php'>General considerations</a></dd>
+	<dd><a href='/manual/en/security.cgi-bin.php'>Installed as CGI binary</a></dd>
+	<dd><a href='/manual/en/security.apache.php'>Installed as an Apache module</a></dd>
+	<dd><a href='/manual/en/security.sessions.php'>Session Security</a></dd>
+	<dd><a href='/manual/en/security.filesystem.php'>Filesystem Security</a></dd>
+	<dd><a href='/manual/en/security.database.php'>Database Security</a></dd>
+	<dd><a href='/manual/en/security.errors.php'>Error Reporting</a></dd>
+	<dd><a href='/manual/en/security.variables.php'>User Submitted Data</a></dd>
+	<dd><a href='/manual/en/security.hiding.php'>Hiding PHP</a></dd>
+	<dd><a href='/manual/en/security.current.php'>Keeping Current</a></dd>
+<dt><a href='/manual/en/features.php'>Features</a></dt>
+	<dd><a href='/manual/en/features.http-auth.php'>HTTP authentication with PHP</a></dd>
+	<dd><a href='/manual/en/features.cookies.php'>Cookies</a></dd>
+	<dd><a href='/manual/en/features.sessions.php'>Sessions</a></dd>
+	<dd><a href='/manual/en/features.file-upload.php'>Handling file uploads</a></dd>
+	<dd><a href='/manual/en/features.remote-files.php'>Using remote files</a></dd>
+	<dd><a href='/manual/en/features.connection-handling.php'>Connection handling</a></dd>
+	<dd><a href='/manual/en/features.persistent-connections.php'>Persistent Database Connections</a></dd>
+	<dd><a href='/manual/en/features.commandline.php'>Command line usage</a></dd>
+	<dd><a href='/manual/en/features.gc.php'>Garbage Collection</a></dd>
+	<dd><a href='/manual/en/features.dtrace.php'>DTrace Dynamic Tracing</a></dd>
+</dl>
+<dl>
+<dt><a href='/manual/en/funcref.php'>Function Reference</a></dt>
+	<dd><a href='/manual/en/refs.basic.php.php'>Affecting PHP's Behaviour</a></dd>
+	<dd><a href='/manual/en/refs.utilspec.audio.php'>Audio Formats Manipulation</a></dd>
+	<dd><a href='/manual/en/refs.remote.auth.php'>Authentication Services</a></dd>
+	<dd><a href='/manual/en/refs.utilspec.cmdline.php'>Command Line Specific Extensions</a></dd>
+	<dd><a href='/manual/en/refs.compression.php'>Compression and Archive Extensions</a></dd>
+	<dd><a href='/manual/en/refs.crypto.php'>Cryptography Extensions</a></dd>
+	<dd><a href='/manual/en/refs.database.php'>Database Extensions</a></dd>
+	<dd><a href='/manual/en/refs.calendar.php'>Date and Time Related Extensions</a></dd>
+	<dd><a href='/manual/en/refs.fileprocess.file.php'>File System Related Extensions</a></dd>
+	<dd><a href='/manual/en/refs.international.php'>Human Language and Character Encoding Support</a></dd>
+	<dd><a href='/manual/en/refs.utilspec.image.php'>Image Processing and Generation</a></dd>
+	<dd><a href='/manual/en/refs.remote.mail.php'>Mail Related Extensions</a></dd>
+	<dd><a href='/manual/en/refs.math.php'>Mathematical Extensions</a></dd>
+	<dd><a href='/manual/en/refs.utilspec.nontext.php'>Non-Text MIME Output</a></dd>
+	<dd><a href='/manual/en/refs.fileprocess.process.php'>Process Control Extensions</a></dd>
+	<dd><a href='/manual/en/refs.basic.other.php'>Other Basic Extensions</a></dd>
+	<dd><a href='/manual/en/refs.remote.other.php'>Other Services</a></dd>
+	<dd><a href='/manual/en/refs.search.php'>Search Engine Extensions</a></dd>
+	<dd><a href='/manual/en/refs.utilspec.server.php'>Server Specific Extensions</a></dd>
+	<dd><a href='/manual/en/refs.basic.session.php'>Session Extensions</a></dd>
+	<dd><a href='/manual/en/refs.basic.text.php'>Text Processing</a></dd>
+	<dd><a href='/manual/en/refs.basic.vartype.php'>Variable and Type Related Extensions</a></dd>
+	<dd><a href='/manual/en/refs.webservice.php'>Web Services</a></dd>
+	<dd><a href='/manual/en/refs.utilspec.windows.php'>Windows Only Extensions</a></dd>
+	<dd><a href='/manual/en/refs.xml.php'>XML Manipulation</a></dd>
+	<dd><a href='/manual/en/refs.ui.php'>GUI Extensions</a></dd>
+</dl>
+<dl>
+<dt>Keyboard Shortcuts</dt><dt>?</dt>
+<dd>This help</dd>
+<dt>j</dt>
+<dd>Next menu item</dd>
+<dt>k</dt>
+<dd>Previous menu item</dd>
+<dt>g p</dt>
+<dd>Previous man page</dd>
+<dt>g n</dt>
+<dd>Next man page</dd>
+<dt>G</dt>
+<dd>Scroll to bottom</dd>
+<dt>g g</dt>
+<dd>Scroll to top</dd>
+<dt>g h</dt>
+<dd>Goto homepage</dd>
+<dt>g s</dt>
+<dd>Goto search<br>(current page)</dd>
+<dt>/</dt>
+<dd>Focus search box</dd>
+</dl></div></nav>
+<div id="goto">
+    <div class="search">
+         <div class="text"></div>
+         <div class="results"><ul></ul></div>
+   </div>
+</div>
+
+  <div id="breadcrumbs" class="clearfix">
+    <div id="breadcrumbs-inner">
+          <div class="next">
+        <a href="function.gnupg-adddecryptkey.php">
+          gnupg_adddecryptkey &raquo;
+        </a>
+      </div>
+              <div class="prev">
+        <a href="gnupg.examples-clearsign.php">
+          &laquo; Clearsign text        </a>
+      </div>
+          <ul>
+            <li><a href='index.php'>PHP Manual</a></li>      <li><a href='funcref.php'>Function Reference</a></li>      <li><a href='refs.utilspec.nontext.php'>Non-Text MIME Output</a></li>      <li><a href='book.gnupg.php'>GnuPG</a></li>      </ul>
+    </div>
+  </div>
+
+
+
+
+<div id="layout" class="clearfix">
+  <section id="layout-content">
+  <div class="page-tools">
+    <div class="change-language">
+      <form action="/manual/change.php" method="get" id="changelang" name="changelang">
+        <fieldset>
+          <label for="changelang-langs">Change language:</label>
+          <select onchange="document.changelang.submit()" name="page" id="changelang-langs">
+            <option value='en/ref.gnupg.php' selected="selected">English</option>
+            <option value='de/ref.gnupg.php'>German</option>
+            <option value='es/ref.gnupg.php'>Spanish</option>
+            <option value='fr/ref.gnupg.php'>French</option>
+            <option value='it/ref.gnupg.php'>Italian</option>
+            <option value='ja/ref.gnupg.php'>Japanese</option>
+            <option value='pt_BR/ref.gnupg.php'>Brazilian Portuguese</option>
+            <option value='ru/ref.gnupg.php'>Russian</option>
+            <option value='tr/ref.gnupg.php'>Turkish</option>
+            <option value='uk/ref.gnupg.php'>Ukrainian</option>
+            <option value='zh/ref.gnupg.php'>Chinese (Simplified)</option>
+            <option value='help-translate.php'>Other</option>
+          </select>
+        </fieldset>
+      </form>
+    </div>
+  </div><div id="ref.gnupg" class="reference">
+ <h1 class="title">GnuPG Functions</h1>
+
+ <div class="partintro">
+   <h1 class="title">Notes</h1>
+   <p class="para">
+    This extension makes use of the keyring of the current user. This keyring
+    is normally located in ~./.gnupg/.
+    To specify a custom location, store the path to the keyring in the
+    environment variable GNUPGHOME. See <a href="function.putenv.php" class="link">putenv</a> for more information how to do
+    this.
+   </p>
+   <p class="para">
+    Some functions require the specification of a key. This specification can
+    be anything that refers to a unique key (userid, key-id, fingerprint,
+    ...).
+    This documentation uses the fingerprint in all examples.
+   </p>
+   <blockquote class="note"><p><strong class="note">Note</strong>: 
+    <p class="para">
+     As alternative to the explicitly documented functions using
+     <span class="type"><a href="language.types.resource.php" class="type resource">resource</a></span>s, you can also use an object-oriented style using
+     <span class="classname"><strong class="classname">gnupg</strong></span> objects.
+    </p>
+   </p></blockquote>
+  </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2>Table of Contents</h2><ul class="chunklist chunklist_reference"><li><a href="function.gnupg-adddecryptkey.php">gnupg_adddecryptkey</a> — Add a key for decryption</li><li><a href="function.gnupg-addencryptkey.php">gnupg_addencryptkey</a> — Add a key for encryption</li><li><a href="function.gnupg-addsignkey.php">gnupg_addsignkey</a> — Add a key for signing</li><li><a href="function.gnupg-cleardecryptkeys.php">gnupg_cleardecryptkeys</a> — Removes all keys which were set for decryption before</li><li><a href="function.gnupg-clearencryptkeys.php">gnupg_clearencryptkeys</a> — Removes all keys which were set for encryption before</li><li><a href="function.gnupg-clearsignkeys.php">gnupg_clearsignkeys</a> — Removes all keys which were set for signing before</li><li><a href="function.gnupg-decrypt.php">gnupg_decrypt</a> — Decrypts a given text</li><li><a href="function.gnupg-decryptverify.php">gnupg_decryptverify</a> — Decrypts and verifies a given text</li><li><a href="function.gnupg-deletekey.php">gnupg_deletekey</a> — Delete a key from the keyring</li><li><a href="function.gnupg-encrypt.php">gnupg_encrypt</a> — Encrypts a given text</li><li><a href="function.gnupg-encryptsign.php">gnupg_encryptsign</a> — Encrypts and signs a given text</li><li><a href="function.gnupg-export.php">gnupg_export</a> — Exports a key</li><li><a href="function.gnupg-getengineinfo.php">gnupg_getengineinfo</a> — Returns the engine info</li><li><a href="function.gnupg-geterror.php">gnupg_geterror</a> — Returns the errortext, if a function fails</li><li><a href="function.gnupg-geterrorinfo.php">gnupg_geterrorinfo</a> — Returns the error info</li><li><a href="function.gnupg-getprotocol.php">gnupg_getprotocol</a> — Returns the currently active protocol for all operations</li><li><a href="function.gnupg-gettrustlist.php">gnupg_gettrustlist</a> — Search the trust items</li><li><a href="function.gnupg-import.php">gnupg_import</a> — Imports a key</li><li><a href="function.gnupg-init.php">gnupg_init</a> — Initialize a connection</li><li><a href="function.gnupg-keyinfo.php">gnupg_keyinfo</a> — Returns an array with information about all keys that matches the given pattern</li><li><a href="function.gnupg-listsignatures.php">gnupg_listsignatures</a> — List key signatures</li><li><a href="function.gnupg-setarmor.php">gnupg_setarmor</a> — Toggle armored output</li><li><a href="function.gnupg-seterrormode.php">gnupg_seterrormode</a> — Sets the mode for error_reporting</li><li><a href="function.gnupg-setsignmode.php">gnupg_setsignmode</a> — Sets the mode for signing</li><li><a href="function.gnupg-sign.php">gnupg_sign</a> — Signs a given text</li><li><a href="function.gnupg-verify.php">gnupg_verify</a> — Verifies a signed text</li></ul>
+</div>
+    <div class="contribute">
+      <h3 class="title">Found A Problem?</h3>
+      <div>
+         
+      </div>
+      <div class="edit-bug">
+        <a href="https://github.com/php/doc-base/blob/master/README.md" title="This will take you to our contribution guidelines on GitHub" target="_blank" rel="noopener noreferrer">Learn How To Improve This Page</a>
+        •
+        <a href="https://github.com/php/doc-en/blob/master/reference/gnupg/reference.xml">Submit a Pull Request</a>
+        •
+        <a href="https://github.com/php/doc-en/issues/new?body=From%20manual%20page:%20https:%2F%2Fphp.net%2Fref.gnupg%0A%0A---">Report a Bug</a>
+      </div>
+    </div><section id="usernotes">
+ <div class="head">
+  <span class="action"><a href="/manual/add-note.php?sect=ref.gnupg&amp;repo=en&amp;redirect=https://www.php.net/manual/en/ref.gnupg.php">＋<small>add a note</small></a></span>
+  <h3 class="title">User Contributed Notes <span class="count">2 notes</span></h3>
+ </div><div id="allnotes">
+  <div class="note" id="71021">  <div class="votes">
+    <div id="Vu71021">
+    <a href="/manual/vote-note.php?id=71021&amp;page=ref.gnupg&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd71021">
+    <a href="/manual/vote-note.php?id=71021&amp;page=ref.gnupg&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V71021" title="86% like this...">
+    11
+    </div>
+  </div>
+  <a href="#71021" class="name">
+  <strong class="user"><em>phplist2REMOVE AT REMtincanOVE.co.uk</em></strong></a><a class="genanchor" href="#71021"> &para;</a><div class="date" title="2006-11-08 09:20"><strong>18 years ago</strong></div>
+  <div class="text" id="Hcom71021">
+<div class="phpcode"><code><span class="html">There's a function/method missing in the list. 
+<br />
+<br />gnupg_deletekey
+<br />
+<br />(no version information, might be only in CVS)
+<br />
+<br />gnupg_deletekey -- Delete a key
+<br />
+<br />Description
+<br />
+<br />bool gnupg_deletekey ( resource identifier, string key, [bool allowsecret]  )
+<br />
+<br />Deletes the key from the keyring. If allowsecret is not set or FALSE it will fail on deleting secret keys.
+<br />
+<br />Return Values
+<br />
+<br />On success, this function returns TRUE. On failure, this function returns FALSE.
+<br />
+<br />Examples
+<br />
+<br />Example 1. Procedural gnupg_deletekey() example
+<br />
+<br /><span class="default">&lt;?php
+<br />$res </span><span class="keyword">= </span><span class="default">gnupg_init</span><span class="keyword">();
+<br /></span><span class="default">gnupg_deletekey</span><span class="keyword">(</span><span class="default">$res</span><span class="keyword">,</span><span class="string">"8660281B6051D071D94B5B230549F9DC851566DC"</span><span class="keyword">);
+<br /></span><span class="default">?&gt;
+<br /></span>
+<br />Example 2. OO gnupg_deletekey() example
+<br /><span class="default">&lt;?php
+<br />$gpg </span><span class="keyword">= new </span><span class="default">gnupg</span><span class="keyword">();
+<br /></span><span class="default">$gpg </span><span class="keyword">-&gt; </span><span class="default">deletekey</span><span class="keyword">(</span><span class="string">"8660281B6051D071D94B5B230549F9DC851566DC"</span><span class="keyword">);
+<br /></span><span class="default">?&gt;</span></span></code></div>
+  </div>
+ </div>
+  <div class="note" id="113095">  <div class="votes">
+    <div id="Vu113095">
+    <a href="/manual/vote-note.php?id=113095&amp;page=ref.gnupg&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd113095">
+    <a href="/manual/vote-note.php?id=113095&amp;page=ref.gnupg&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V113095" title="80% like this...">
+    6
+    </div>
+  </div>
+  <a href="#113095" class="name">
+  <strong class="user"><em>web at rlauzier dot com</em></strong></a><a class="genanchor" href="#113095"> &para;</a><div class="date" title="2013-08-29 03:48"><strong>12 years ago</strong></div>
+  <div class="text" id="Hcom113095">
+<div class="phpcode"><code><span class="html">The function for listing all key signatures is also missing from the list...<br /><br />gnupg_listsignatures<br /><br />Examples:<br /><br />$gpg = new gnupg();<br />$result = $gpg-&gt;listsignatures($fingerprint);<br /><br />$gpg = gnupg_init();<br />$result = gnupg_listsignatures($gpg, $fingerprint);</span></code></div>
+  </div>
+ </div></div>
+<div class="foot"><a href="/manual/add-note.php?sect=ref.gnupg&amp;repo=en&amp;redirect=https://www.php.net/manual/en/ref.gnupg.php">＋<small>add a note</small></a></div>
+</section>    </section><!-- layout-content -->
+        <aside class='layout-menu'>
+
+        <ul class='parent-menu-list'>
+                                    <li>
+                <a href="book.gnupg.php">GnuPG</a>
+
+                                    <ul class='child-menu-list'>
+
+                                                <li class="">
+                            <a href="intro.gnupg.php" title="Introduction">Introduction</a>
+                        </li>
+                                                <li class="">
+                            <a href="gnupg.setup.php" title="Installing/Configuring">Installing/Configuring</a>
+                        </li>
+                                                <li class="">
+                            <a href="gnupg.constants.php" title="Predefined Constants">Predefined Constants</a>
+                        </li>
+                                                <li class="">
+                            <a href="gnupg.examples.php" title="Examples">Examples</a>
+                        </li>
+                                                <li class="current">
+                            <a href="ref.gnupg.php" title="GnuPG Functions">GnuPG Functions</a>
+                        </li>
+                        
+                    </ul>
+                
+            </li>
+                        
+                    </ul>
+    </aside>
+
+
+  </div><!-- layout -->
+
+  <footer>
+    <div class="container footer-content">
+      <div class="row-fluid">
+      <ul class="footmenu">
+        <li><a href="/manual/en/copyright.php">Copyright &copy; 2001-2025 The PHP Documentation Group</a></li>
+        <li><a href="/my.php">My PHP.net</a></li>
+        <li><a href="/contact.php">Contact</a></li>
+        <li><a href="/sites.php">Other PHP.net sites</a></li>
+        <li><a href="/privacy.php">Privacy policy</a></li>
+      </ul>
+      </div>
+    </div>
+  </footer>
+
+    
+<script src="/manual/en/js/ext/jquery-3.6.0.min.js"></script>
+<script src="/manual/en/js/ext/FuzzySearch.min.js"></script>
+<script src="/manual/en/js/ext/mousetrap.min.js"></script>
+<script src="/manual/en/js/ext/jquery.scrollTo.min.js"></script>
+<script src="/manual/en/js/search.js"></script>
+<script src="/manual/en/js/common.js"></script>
+<script type="module" src="/manual/en/js/interactive-examples.js"></script>
+
+<a id="toTop" href="javascript:;"><span id="toTopHover"></span><img width="40" height="40" alt="To Top" src="/images/to-top@2x.png"></a>
+
+<div id="search-modal__backdrop" class="search-modal__backdrop">
+  <div
+    role="dialog"
+    aria-label="Search modal"
+    id="search-modal"
+    class="search-modal"
+  >
+    <div class="search-modal__header">
+      <div class="search-modal__form">
+        <div class="search-modal__input-icon">
+          <!-- https://feathericons.com search -->
+          <svg xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+            width="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </div>
+        <input
+          type="search"
+          id="search-modal__input"
+          class="search-modal__input"
+          placeholder="Search docs"
+          aria-label="Search docs"
+        />
+      </div>
+
+      <button aria-label="Close" class="search-modal__close">
+        <!-- https://pictogrammers.com/library/mdi/icon/close/ -->
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+          width="24"
+          viewBox="0 0 24 24"
+        >
+          <path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"/>
+        </svg>
+      </button>
+    </div>
+    <div
+      role="listbox"
+      aria-label="Search results"
+      id="search-modal__results"
+      class="search-modal__results"
+    ></div>
+    <div class="search-modal__helper-text">
+      <div>
+        <kbd>↑</kbd> and <kbd>↓</kbd> to navigate •
+        <kbd>Enter</kbd> to select •
+        <kbd>Esc</kbd> to close
+      </div>
+      <div>
+        Press <kbd>Enter</kbd> without
+        selection to search using Google
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

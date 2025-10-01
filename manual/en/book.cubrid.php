@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+     
+  
+  <title>PHP: CUBRID - Manual</title>
+
+      <link rel="stylesheet" type="text/css" href="/manual/en/fonts/Fira/fira.css" media="screen">
+      <link rel="stylesheet" type="text/css" href="/manual/en/fonts/Font-Awesome/css/fontello.css" media="screen">
+      <link rel="stylesheet" type="text/css" href="/manual/en/styles/theme-base.css" media="screen">
+      <link rel="stylesheet" type="text/css" href="/manual/en/styles/theme-medium.css" media="screen">
+  
+ <link rel="icon" type="image/svg+xml" sizes="any" href="https://www.php.net/favicon.svg?v=2">
+ <link rel="icon" type="image/png" sizes="196x196" href="https://www.php.net/favicon-196x196.png?v=2">
+ <link rel="icon" type="image/png" sizes="32x32" href="https://www.php.net/favicon-32x32.png?v=2">
+ <link rel="icon" type="image/png" sizes="16x16" href="https://www.php.net/favicon-16x16.png?v=2">
+ <link rel="shortcut icon" href="https://www.php.net/favicon.ico?v=2">
+
+ <link rel="search" type="application/opensearchdescription+xml" href="https://www.php.net/phpnetimprovedsearch.src" title="Add PHP.net search">
+ <link rel="alternate" type="application/atom+xml" href="https://www.php.net/releases/feed.php" title="PHP Release feed">
+ <link rel="alternate" type="application/atom+xml" href="https://www.php.net/feed.atom" title="PHP: Hypertext Preprocessor">
+
+ <link rel="canonical" href="https://www.php.net/manual/en/book.cubrid.php">
+ <link rel="shorturl" href="https://www.php.net/cubrid">
+ <link rel="alternate" href="https://www.php.net/cubrid" hreflang="x-default">
+
+ <link rel="contents" href="https://www.php.net/manual/en/index.php">
+ <link rel="index" href="https://www.php.net/manual/en/refs.database.vendors.php">
+ <link rel="prev" href="https://www.php.net/manual/en/refs.database.vendors.php">
+ <link rel="next" href="https://www.php.net/manual/en/intro.cubrid.php">
+
+ <link rel="alternate" href="https://www.php.net/manual/en/book.cubrid.php" hreflang="en">
+ <link rel="alternate" href="https://www.php.net/manual/de/book.cubrid.php" hreflang="de">
+ <link rel="alternate" href="https://www.php.net/manual/es/book.cubrid.php" hreflang="es">
+ <link rel="alternate" href="https://www.php.net/manual/fr/book.cubrid.php" hreflang="fr">
+ <link rel="alternate" href="https://www.php.net/manual/it/book.cubrid.php" hreflang="it">
+ <link rel="alternate" href="https://www.php.net/manual/ja/book.cubrid.php" hreflang="ja">
+ <link rel="alternate" href="https://www.php.net/manual/pt_BR/book.cubrid.php" hreflang="pt_BR">
+ <link rel="alternate" href="https://www.php.net/manual/ru/book.cubrid.php" hreflang="ru">
+ <link rel="alternate" href="https://www.php.net/manual/tr/book.cubrid.php" hreflang="tr">
+ <link rel="alternate" href="https://www.php.net/manual/uk/book.cubrid.php" hreflang="uk">
+ <link rel="alternate" href="https://www.php.net/manual/zh/book.cubrid.php" hreflang="zh">
+
+<link rel="stylesheet" type="text/css" href="/manual/en/fonts/Fira/fira.css" media="screen">
+<link rel="stylesheet" type="text/css" href="/manual/en/fonts/Font-Awesome/css/fontello.css" media="screen">
+<link rel="stylesheet" type="text/css" href="/manual/en/styles/theme-base.css" media="screen">
+<link rel="stylesheet" type="text/css" href="/manual/en/styles/theme-medium.css" media="screen">
+
+
+ 
+
+<meta name="Description" content="CUBRID" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@official_php" />
+<meta name="twitter:title" content="PHP: CUBRID - Manual" />
+<meta name="twitter:description" content="CUBRID" />
+<meta name="twitter:creator" content="@official_php" />
+<meta name="twitter:image:src" content="https://www.php.net/images/meta-image.png" />
+
+<meta itemprop="name" content="PHP: CUBRID - Manual" />
+<meta itemprop="description" content="CUBRID" />
+<meta itemprop="image" content="https://www.php.net/images/meta-image.png" />
+
+<meta property="og:image" content="https://www.php.net/images/meta-image.png" />
+<meta property="og:description" content="CUBRID" />
+
+<link href="https://fosstodon.org/@php" rel="me" />
+<!-- Matomo -->
+<script>
+    var _paq = window._paq = window._paq || [];
+    /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+    _paq.push(["setDoNotTrack", true]);
+    _paq.push(["disableCookies"]);
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+        var u="https://analytics.php.net/";
+        _paq.push(['setTrackerUrl', u+'matomo.php']);
+        _paq.push(['setSiteId', '1']);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+    })();
+</script>
+<!-- End Matomo Code -->
+</head>
+<body class="docs ">
+
+<nav class="navbar navbar-fixed-top">
+  <div class="navbar__inner">
+    <a href="/" aria-label="PHP Home" class="navbar__brand">
+      <img
+        src="/images/logos/php-logo-white.svg"
+        aria-hidden="true"
+        width="80"
+        height="40"
+      >
+    </a>
+
+    <div
+      id="navbar__offcanvas"
+      tabindex="-1"
+      class="navbar__offcanvas"
+      aria-label="Menu"
+    >
+      <button
+        id="navbar__close-button"
+        class="navbar__icon-item navbar_icon-item--visually-aligned navbar__close-button"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg>
+      </button>
+
+      <ul class="navbar__nav">
+                            <li class="navbar__item">
+              <a
+                href="/downloads.php"
+                                class="navbar__link  "
+              >
+                                  Downloads                              </a>
+          </li>
+                            <li class="navbar__item">
+              <a
+                href="/docs.php"
+                aria-current="page"                class="navbar__link navbar__link--active "
+              >
+                                  Documentation                              </a>
+          </li>
+                            <li class="navbar__item">
+              <a
+                href="/get-involved.php"
+                                class="navbar__link  "
+              >
+                                  Get Involved                              </a>
+          </li>
+                            <li class="navbar__item">
+              <a
+                href="/support.php"
+                                class="navbar__link  "
+              >
+                                  Help                              </a>
+          </li>
+                            <li class="navbar__item">
+              <a
+                href="/releases/8.4/index.php"
+                                class="navbar__link  navbar__release"
+              >
+                                  <img src="/images/php8/logo_php8_4.svg" alt="PHP 8.4">
+                              </a>
+          </li>
+              </ul>
+    </div>
+
+    <div class="navbar__right">
+      
+      <!-- Desktop default search -->
+      <form
+        action="/manual-lookup.php"
+        class="navbar__search-form"
+      >
+        <label for="navbar__search-input" aria-label="Search docs">
+          <svg
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+  width="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="11" cy="11" r="8"></circle>
+  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+</svg>        </label>
+        <input
+          type="search"
+          name="pattern"
+          id="navbar__search-input"
+          class="navbar__search-input"
+          placeholder="Search docs"
+          accesskey="s"
+        >
+        <input type="hidden" name="scope" value="quickref">
+      </form>
+
+      <!-- Desktop encanced search -->
+      <button
+        id="navbar__search-button"
+        class="navbar__search-button"
+        hidden
+      >
+        <svg
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+  width="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="11" cy="11" r="8"></circle>
+  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+</svg>        Search docs
+      </button>
+
+      <!-- Mobile default items -->
+      <a
+        id="navbar__search-link"
+        href="/lookup-form.php"
+        aria-label="Search docs"
+        class="navbar__icon-item navbar__search-link"
+      >
+        <svg
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+  width="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="11" cy="11" r="8"></circle>
+  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+</svg>      </a>
+      <a
+        id="navbar__menu-link"
+        href="/menu.php"
+        aria-label="Menu"
+        class="navbar__icon-item navbar_icon-item--visually-aligned navbar_menu-link"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+  width="24"
+  viewBox="0 0 24 24"
+  fill="currentColor"
+>
+  <path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" />
+</svg>      </a>
+
+      <!-- Mobile enhanced items -->
+      <button
+        id="navbar__search-button-mobile"
+        aria-label="Search docs"
+        class="navbar__icon-item navbar__search-button-mobile"
+        hidden
+      >
+        <svg
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+  width="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="11" cy="11" r="8"></circle>
+  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+</svg>      </button>
+      <button
+        id="navbar__menu-button"
+        aria-label="Menu"
+        class="navbar__icon-item navbar_icon-item--visually-aligned"
+        hidden
+      >
+        <svg xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+  width="24"
+  viewBox="0 0 24 24"
+  fill="currentColor"
+>
+  <path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" />
+</svg>      </button>
+    </div>
+
+    <div
+      id="navbar__backdrop"
+      class="navbar__backdrop"
+    ></div>
+  </div>
+
+  <div id="flash-message"></div>
+</nav>
+<div class="headsup"><a href='/index.php#2025-09-25-3'>PHP 8.5.0 RC 1 available for testing</a></div>
+<nav id="trick"><div><dl>
+<dt><a href='/manual/en/getting-started.php'>Getting Started</a></dt>
+	<dd><a href='/manual/en/introduction.php'>Introduction</a></dd>
+	<dd><a href='/manual/en/tutorial.php'>A simple tutorial</a></dd>
+<dt><a href='/manual/en/langref.php'>Language Reference</a></dt>
+	<dd><a href='/manual/en/language.basic-syntax.php'>Basic syntax</a></dd>
+	<dd><a href='/manual/en/language.types.php'>Types</a></dd>
+	<dd><a href='/manual/en/language.variables.php'>Variables</a></dd>
+	<dd><a href='/manual/en/language.constants.php'>Constants</a></dd>
+	<dd><a href='/manual/en/language.expressions.php'>Expressions</a></dd>
+	<dd><a href='/manual/en/language.operators.php'>Operators</a></dd>
+	<dd><a href='/manual/en/language.control-structures.php'>Control Structures</a></dd>
+	<dd><a href='/manual/en/language.functions.php'>Functions</a></dd>
+	<dd><a href='/manual/en/language.oop5.php'>Classes and Objects</a></dd>
+	<dd><a href='/manual/en/language.namespaces.php'>Namespaces</a></dd>
+	<dd><a href='/manual/en/language.enumerations.php'>Enumerations</a></dd>
+	<dd><a href='/manual/en/language.errors.php'>Errors</a></dd>
+	<dd><a href='/manual/en/language.exceptions.php'>Exceptions</a></dd>
+	<dd><a href='/manual/en/language.fibers.php'>Fibers</a></dd>
+	<dd><a href='/manual/en/language.generators.php'>Generators</a></dd>
+	<dd><a href='/manual/en/language.attributes.php'>Attributes</a></dd>
+	<dd><a href='/manual/en/language.references.php'>References Explained</a></dd>
+	<dd><a href='/manual/en/reserved.variables.php'>Predefined Variables</a></dd>
+	<dd><a href='/manual/en/reserved.exceptions.php'>Predefined Exceptions</a></dd>
+	<dd><a href='/manual/en/reserved.interfaces.php'>Predefined Interfaces and Classes</a></dd>
+	<dd><a href='/manual/en/reserved.attributes.php'>Predefined Attributes</a></dd>
+	<dd><a href='/manual/en/context.php'>Context options and parameters</a></dd>
+	<dd><a href='/manual/en/wrappers.php'>Supported Protocols and Wrappers</a></dd>
+</dl>
+<dl>
+<dt><a href='/manual/en/security.php'>Security</a></dt>
+	<dd><a href='/manual/en/security.intro.php'>Introduction</a></dd>
+	<dd><a href='/manual/en/security.general.php'>General considerations</a></dd>
+	<dd><a href='/manual/en/security.cgi-bin.php'>Installed as CGI binary</a></dd>
+	<dd><a href='/manual/en/security.apache.php'>Installed as an Apache module</a></dd>
+	<dd><a href='/manual/en/security.sessions.php'>Session Security</a></dd>
+	<dd><a href='/manual/en/security.filesystem.php'>Filesystem Security</a></dd>
+	<dd><a href='/manual/en/security.database.php'>Database Security</a></dd>
+	<dd><a href='/manual/en/security.errors.php'>Error Reporting</a></dd>
+	<dd><a href='/manual/en/security.variables.php'>User Submitted Data</a></dd>
+	<dd><a href='/manual/en/security.hiding.php'>Hiding PHP</a></dd>
+	<dd><a href='/manual/en/security.current.php'>Keeping Current</a></dd>
+<dt><a href='/manual/en/features.php'>Features</a></dt>
+	<dd><a href='/manual/en/features.http-auth.php'>HTTP authentication with PHP</a></dd>
+	<dd><a href='/manual/en/features.cookies.php'>Cookies</a></dd>
+	<dd><a href='/manual/en/features.sessions.php'>Sessions</a></dd>
+	<dd><a href='/manual/en/features.file-upload.php'>Handling file uploads</a></dd>
+	<dd><a href='/manual/en/features.remote-files.php'>Using remote files</a></dd>
+	<dd><a href='/manual/en/features.connection-handling.php'>Connection handling</a></dd>
+	<dd><a href='/manual/en/features.persistent-connections.php'>Persistent Database Connections</a></dd>
+	<dd><a href='/manual/en/features.commandline.php'>Command line usage</a></dd>
+	<dd><a href='/manual/en/features.gc.php'>Garbage Collection</a></dd>
+	<dd><a href='/manual/en/features.dtrace.php'>DTrace Dynamic Tracing</a></dd>
+</dl>
+<dl>
+<dt><a href='/manual/en/funcref.php'>Function Reference</a></dt>
+	<dd><a href='/manual/en/refs.basic.php.php'>Affecting PHP's Behaviour</a></dd>
+	<dd><a href='/manual/en/refs.utilspec.audio.php'>Audio Formats Manipulation</a></dd>
+	<dd><a href='/manual/en/refs.remote.auth.php'>Authentication Services</a></dd>
+	<dd><a href='/manual/en/refs.utilspec.cmdline.php'>Command Line Specific Extensions</a></dd>
+	<dd><a href='/manual/en/refs.compression.php'>Compression and Archive Extensions</a></dd>
+	<dd><a href='/manual/en/refs.crypto.php'>Cryptography Extensions</a></dd>
+	<dd><a href='/manual/en/refs.database.php'>Database Extensions</a></dd>
+	<dd><a href='/manual/en/refs.calendar.php'>Date and Time Related Extensions</a></dd>
+	<dd><a href='/manual/en/refs.fileprocess.file.php'>File System Related Extensions</a></dd>
+	<dd><a href='/manual/en/refs.international.php'>Human Language and Character Encoding Support</a></dd>
+	<dd><a href='/manual/en/refs.utilspec.image.php'>Image Processing and Generation</a></dd>
+	<dd><a href='/manual/en/refs.remote.mail.php'>Mail Related Extensions</a></dd>
+	<dd><a href='/manual/en/refs.math.php'>Mathematical Extensions</a></dd>
+	<dd><a href='/manual/en/refs.utilspec.nontext.php'>Non-Text MIME Output</a></dd>
+	<dd><a href='/manual/en/refs.fileprocess.process.php'>Process Control Extensions</a></dd>
+	<dd><a href='/manual/en/refs.basic.other.php'>Other Basic Extensions</a></dd>
+	<dd><a href='/manual/en/refs.remote.other.php'>Other Services</a></dd>
+	<dd><a href='/manual/en/refs.search.php'>Search Engine Extensions</a></dd>
+	<dd><a href='/manual/en/refs.utilspec.server.php'>Server Specific Extensions</a></dd>
+	<dd><a href='/manual/en/refs.basic.session.php'>Session Extensions</a></dd>
+	<dd><a href='/manual/en/refs.basic.text.php'>Text Processing</a></dd>
+	<dd><a href='/manual/en/refs.basic.vartype.php'>Variable and Type Related Extensions</a></dd>
+	<dd><a href='/manual/en/refs.webservice.php'>Web Services</a></dd>
+	<dd><a href='/manual/en/refs.utilspec.windows.php'>Windows Only Extensions</a></dd>
+	<dd><a href='/manual/en/refs.xml.php'>XML Manipulation</a></dd>
+	<dd><a href='/manual/en/refs.ui.php'>GUI Extensions</a></dd>
+</dl>
+<dl>
+<dt>Keyboard Shortcuts</dt><dt>?</dt>
+<dd>This help</dd>
+<dt>j</dt>
+<dd>Next menu item</dd>
+<dt>k</dt>
+<dd>Previous menu item</dd>
+<dt>g p</dt>
+<dd>Previous man page</dd>
+<dt>g n</dt>
+<dd>Next man page</dd>
+<dt>G</dt>
+<dd>Scroll to bottom</dd>
+<dt>g g</dt>
+<dd>Scroll to top</dd>
+<dt>g h</dt>
+<dd>Goto homepage</dd>
+<dt>g s</dt>
+<dd>Goto search<br>(current page)</dd>
+<dt>/</dt>
+<dd>Focus search box</dd>
+</dl></div></nav>
+<div id="goto">
+    <div class="search">
+         <div class="text"></div>
+         <div class="results"><ul></ul></div>
+   </div>
+</div>
+
+  <div id="breadcrumbs" class="clearfix">
+    <div id="breadcrumbs-inner">
+          <div class="next">
+        <a href="intro.cubrid.php">
+          Introduction &raquo;
+        </a>
+      </div>
+              <div class="prev">
+        <a href="refs.database.vendors.php">
+          &laquo; Vendor Specific Database Extensions        </a>
+      </div>
+          <ul>
+            <li><a href='index.php'>PHP Manual</a></li>      <li><a href='funcref.php'>Function Reference</a></li>      <li><a href='refs.database.php'>Database Extensions</a></li>      <li><a href='refs.database.vendors.php'>Vendor Specific Database Extensions</a></li>      </ul>
+    </div>
+  </div>
+
+
+
+
+<div id="layout" class="clearfix">
+  <section id="layout-content">
+  <div class="page-tools">
+    <div class="change-language">
+      <form action="/manual/change.php" method="get" id="changelang" name="changelang">
+        <fieldset>
+          <label for="changelang-langs">Change language:</label>
+          <select onchange="document.changelang.submit()" name="page" id="changelang-langs">
+            <option value='en/book.cubrid.php' selected="selected">English</option>
+            <option value='de/book.cubrid.php'>German</option>
+            <option value='es/book.cubrid.php'>Spanish</option>
+            <option value='fr/book.cubrid.php'>French</option>
+            <option value='it/book.cubrid.php'>Italian</option>
+            <option value='ja/book.cubrid.php'>Japanese</option>
+            <option value='pt_BR/book.cubrid.php'>Brazilian Portuguese</option>
+            <option value='ru/book.cubrid.php'>Russian</option>
+            <option value='tr/book.cubrid.php'>Turkish</option>
+            <option value='uk/book.cubrid.php'>Ukrainian</option>
+            <option value='zh/book.cubrid.php'>Chinese (Simplified)</option>
+            <option value='help-translate.php'>Other</option>
+          </select>
+        </fieldset>
+      </form>
+    </div>
+  </div><div id="book.cubrid" class="book">
+ 
+ <h1 class="title">CUBRID</h1>
+ 
+
+ 
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+<ul class="chunklist chunklist_book"><li><a href="intro.cubrid.php">Introduction</a></li><li><a href="cubrid.setup.php">Installing/Configuring</a><ul class="chunklist chunklist_book chunklist_children"><li><a href="cubrid.requirements.php">Requirements</a></li><li><a href="cubrid.installation.php">Installation</a></li><li><a href="cubrid.configuration.php">Runtime Configuration</a></li><li><a href="cubrid.resources.php">Resource Types</a></li></ul></li><li><a href="cubrid.constants.php">Predefined Constants</a></li><li><a href="cubrid.examples.php">Examples</a></li><li><a href="ref.cubrid.php">CUBRID Functions</a><ul class="chunklist chunklist_book chunklist_children"><li><a href="function.cubrid-bind.php">cubrid_bind</a> — Bind variables to a prepared statement as parameters</li><li><a href="function.cubrid-close-prepare.php">cubrid_close_prepare</a> — Close the request handle</li><li><a href="function.cubrid-close-request.php">cubrid_close_request</a> — Close the request handle</li><li><a href="function.cubrid-col-get.php">cubrid_col_get</a> — Get contents of collection type column using OID</li><li><a href="function.cubrid-col-size.php">cubrid_col_size</a> — Get the number of elements in collection type column using OID</li><li><a href="function.cubrid-column-names.php">cubrid_column_names</a> — Get the column names in result</li><li><a href="function.cubrid-column-types.php">cubrid_column_types</a> — Get column types in result</li><li><a href="function.cubrid-commit.php">cubrid_commit</a> — Commit a transaction</li><li><a href="function.cubrid-connect.php">cubrid_connect</a> — Open a connection to a CUBRID Server</li><li><a href="function.cubrid-connect-with-url.php">cubrid_connect_with_url</a> — Establish the environment for connecting to CUBRID server</li><li><a href="function.cubrid-current-oid.php">cubrid_current_oid</a> — Get OID of the current cursor location</li><li><a href="function.cubrid-disconnect.php">cubrid_disconnect</a> — Close a database connection</li><li><a href="function.cubrid-drop.php">cubrid_drop</a> — Delete an instance using OID</li><li><a href="function.cubrid-error-code.php">cubrid_error_code</a> — Get error code for the most recent function call</li><li><a href="function.cubrid-error-code-facility.php">cubrid_error_code_facility</a> — Get the facility code of error</li><li><a href="function.cubrid-error-msg.php">cubrid_error_msg</a> — Get last error message for the most recent function call</li><li><a href="function.cubrid-execute.php">cubrid_execute</a> — Execute a prepared SQL statement</li><li><a href="function.cubrid-fetch.php">cubrid_fetch</a> — Fetch the next row from a result set</li><li><a href="function.cubrid-free-result.php">cubrid_free_result</a> — Free the memory occupied by the result data</li><li><a href="function.cubrid-get.php">cubrid_get</a> — Get a column using OID</li><li><a href="function.cubrid-get-autocommit.php">cubrid_get_autocommit</a> — Get auto-commit mode of the connection</li><li><a href="function.cubrid-get-charset.php">cubrid_get_charset</a> — Return the current CUBRID connection charset</li><li><a href="function.cubrid-get-class-name.php">cubrid_get_class_name</a> — Get the class name using OID</li><li><a href="function.cubrid-get-client-info.php">cubrid_get_client_info</a> — Return the client library version</li><li><a href="function.cubrid-get-db-parameter.php">cubrid_get_db_parameter</a> — Returns the CUBRID database parameters</li><li><a href="function.cubrid-get-query-timeout.php">cubrid_get_query_timeout</a> — Get the query timeout value of the request</li><li><a href="function.cubrid-get-server-info.php">cubrid_get_server_info</a> — Return the CUBRID server version</li><li><a href="function.cubrid-insert-id.php">cubrid_insert_id</a> — Return the ID generated for the last updated AUTO_INCREMENT column</li><li><a href="function.cubrid-is-instance.php">cubrid_is_instance</a> — Check whether the instance pointed by OID exists</li><li><a href="function.cubrid-lob-close.php">cubrid_lob_close</a> — Close BLOB/CLOB data</li><li><a href="function.cubrid-lob-export.php">cubrid_lob_export</a> — Export BLOB/CLOB data to file</li><li><a href="function.cubrid-lob-get.php">cubrid_lob_get</a> — Get BLOB/CLOB data</li><li><a href="function.cubrid-lob-send.php">cubrid_lob_send</a> — Read BLOB/CLOB data and send straight to browser</li><li><a href="function.cubrid-lob-size.php">cubrid_lob_size</a> — Get BLOB/CLOB data size</li><li><a href="function.cubrid-lob2-bind.php">cubrid_lob2_bind</a> — Bind a lob object or a string as a lob object to a prepared statement as parameters</li><li><a href="function.cubrid-lob2-close.php">cubrid_lob2_close</a> — Close LOB object</li><li><a href="function.cubrid-lob2-export.php">cubrid_lob2_export</a> — Export the lob object to a file</li><li><a href="function.cubrid-lob2-import.php">cubrid_lob2_import</a> — Import BLOB/CLOB data from a file</li><li><a href="function.cubrid-lob2-new.php">cubrid_lob2_new</a> — Create a lob object</li><li><a href="function.cubrid-lob2-read.php">cubrid_lob2_read</a> — Read from BLOB/CLOB data</li><li><a href="function.cubrid-lob2-seek.php">cubrid_lob2_seek</a> — Move the cursor of a lob object</li><li><a href="function.cubrid-lob2-seek64.php">cubrid_lob2_seek64</a> — Move the cursor of a lob object</li><li><a href="function.cubrid-lob2-size.php">cubrid_lob2_size</a> — Get a lob object's size</li><li><a href="function.cubrid-lob2-size64.php">cubrid_lob2_size64</a> — Get a lob object's size</li><li><a href="function.cubrid-lob2-tell.php">cubrid_lob2_tell</a> — Tell the cursor position of the LOB object</li><li><a href="function.cubrid-lob2-tell64.php">cubrid_lob2_tell64</a> — Tell the cursor position of the LOB object</li><li><a href="function.cubrid-lob2-write.php">cubrid_lob2_write</a> — Write to a lob object</li><li><a href="function.cubrid-lock-read.php">cubrid_lock_read</a> — Set a read lock on the given OID</li><li><a href="function.cubrid-lock-write.php">cubrid_lock_write</a> — Set a write lock on the given OID</li><li><a href="function.cubrid-move-cursor.php">cubrid_move_cursor</a> — Move the cursor in the result</li><li><a href="function.cubrid-next-result.php">cubrid_next_result</a> — Get result of next query when executing multiple SQL statements</li><li><a href="function.cubrid-num-cols.php">cubrid_num_cols</a> — Return the number of columns in the result set</li><li><a href="function.cubrid-num-rows.php">cubrid_num_rows</a> — Get the number of rows in the result set</li><li><a href="function.cubrid-pconnect.php">cubrid_pconnect</a> — Open a persistent connection to a CUBRID server</li><li><a href="function.cubrid-pconnect-with-url.php">cubrid_pconnect_with_url</a> — Open a persistent connection to CUBRID server</li><li><a href="function.cubrid-prepare.php">cubrid_prepare</a> — Prepare a SQL statement for execution</li><li><a href="function.cubrid-put.php">cubrid_put</a> — Update a column using OID</li><li><a href="function.cubrid-rollback.php">cubrid_rollback</a> — Roll back a transaction</li><li><a href="function.cubrid-schema.php">cubrid_schema</a> — Get the requested schema information</li><li><a href="function.cubrid-seq-drop.php">cubrid_seq_drop</a> — Delete an element from sequence type column using OID</li><li><a href="function.cubrid-seq-insert.php">cubrid_seq_insert</a> — Insert an element to a sequence type column using OID</li><li><a href="function.cubrid-seq-put.php">cubrid_seq_put</a> — Update the element value of sequence type column using OID</li><li><a href="function.cubrid-set-add.php">cubrid_set_add</a> — Insert a single element to set type column using OID</li><li><a href="function.cubrid-set-autocommit.php">cubrid_set_autocommit</a> — Set autocommit mode of the connection</li><li><a href="function.cubrid-set-db-parameter.php">cubrid_set_db_parameter</a> — Sets the CUBRID database parameters</li><li><a href="function.cubrid-set-drop.php">cubrid_set_drop</a> — Delete an element from set type column using OID</li><li><a href="function.cubrid-set-query-timeout.php">cubrid_set_query_timeout</a> — Set the timeout time of query execution</li><li><a href="function.cubrid-version.php">cubrid_version</a> — Get the CUBRID PHP module's version</li></ul></li><li><a href="cubridmysql.cubrid.php">CUBRID MySQL Compatibility Functions</a><ul class="chunklist chunklist_book chunklist_children"><li><a href="function.cubrid-affected-rows.php">cubrid_affected_rows</a> — Return the number of rows affected by the last SQL statement</li><li><a href="function.cubrid-client-encoding.php">cubrid_client_encoding</a> — Return the current CUBRID connection charset</li><li><a href="function.cubrid-close.php">cubrid_close</a> — Close CUBRID connection</li><li><a href="function.cubrid-data-seek.php">cubrid_data_seek</a> — Move the internal row pointer of the CUBRID result</li><li><a href="function.cubrid-db-name.php">cubrid_db_name</a> — Get db name from results of cubrid_list_dbs</li><li><a href="function.cubrid-errno.php">cubrid_errno</a> — Return the numerical value of the error message from previous CUBRID operation</li><li><a href="function.cubrid-error.php">cubrid_error</a> — Get the error message</li><li><a href="function.cubrid-fetch-array.php">cubrid_fetch_array</a> — Fetch a result row as an associative array, a numeric array, or both</li><li><a href="function.cubrid-fetch-assoc.php">cubrid_fetch_assoc</a> — Return the associative array that corresponds to the fetched row</li><li><a href="function.cubrid-fetch-field.php">cubrid_fetch_field</a> — Get column information from a result and return as an object</li><li><a href="function.cubrid-fetch-lengths.php">cubrid_fetch_lengths</a> — Return an array with the lengths of the values of each field from the current row</li><li><a href="function.cubrid-fetch-object.php">cubrid_fetch_object</a> — Fetch the next row and return it as an object</li><li><a href="function.cubrid-fetch-row.php">cubrid_fetch_row</a> — Return a numerical array with the values of the current row</li><li><a href="function.cubrid-field-flags.php">cubrid_field_flags</a> — Return a string with the flags of the given field offset</li><li><a href="function.cubrid-field-len.php">cubrid_field_len</a> — Get the maximum length of the specified field</li><li><a href="function.cubrid-field-name.php">cubrid_field_name</a> — Return the name of the specified field index</li><li><a href="function.cubrid-field-seek.php">cubrid_field_seek</a> — Move the result set cursor to the specified field offset</li><li><a href="function.cubrid-field-table.php">cubrid_field_table</a> — Return the name of the table of the specified field</li><li><a href="function.cubrid-field-type.php">cubrid_field_type</a> — Return the type of the column corresponding to the given field offset</li><li><a href="function.cubrid-list-dbs.php">cubrid_list_dbs</a> — Return an array with the list of all existing CUBRID databases</li><li><a href="function.cubrid-num-fields.php">cubrid_num_fields</a> — Return the number of columns in the result set</li><li><a href="function.cubrid-ping.php">cubrid_ping</a> — Ping a server connection or reconnect if there is no connection</li><li><a href="function.cubrid-query.php">cubrid_query</a> — Send a CUBRID query</li><li><a href="function.cubrid-real-escape-string.php">cubrid_real_escape_string</a> — Escape special characters in a string for use in an SQL statement</li><li><a href="function.cubrid-result.php">cubrid_result</a> — Return the value of a specific field in a specific row</li><li><a href="function.cubrid-unbuffered-query.php">cubrid_unbuffered_query</a> — Perform a query without fetching the results into memory</li></ul></li><li><a href="oldaliases.cubrid.php">CUBRID Obsolete Aliases and Functions</a><ul class="chunklist chunklist_book chunklist_children"><li><a href="function.cubrid-load-from-glo.php">cubrid_load_from_glo</a> — Read data from a GLO instance and save it in a file</li><li><a href="function.cubrid-new-glo.php">cubrid_new_glo</a> — Create a glo instance</li><li><a href="function.cubrid-save-to-glo.php">cubrid_save_to_glo</a> — Save requested file in a GLO instance</li><li><a href="function.cubrid-send-glo.php">cubrid_send_glo</a> — Read data from glo and send it to std output</li></ul></li></ul></div>    <div class="contribute">
+      <h3 class="title">Found A Problem?</h3>
+      <div>
+         
+      </div>
+      <div class="edit-bug">
+        <a href="https://github.com/php/doc-base/blob/master/README.md" title="This will take you to our contribution guidelines on GitHub" target="_blank" rel="noopener noreferrer">Learn How To Improve This Page</a>
+        •
+        <a href="https://github.com/php/doc-en/blob/master/reference/cubrid/book.xml">Submit a Pull Request</a>
+        •
+        <a href="https://github.com/php/doc-en/issues/new?body=From%20manual%20page:%20https:%2F%2Fphp.net%2Fbook.cubrid%0A%0A---">Report a Bug</a>
+      </div>
+    </div><section id="usernotes">
+ <div class="head">
+  <span class="action"><a href="/manual/add-note.php?sect=book.cubrid&amp;repo=en&amp;redirect=https://www.php.net/manual/en/book.cubrid.php">＋<small>add a note</small></a></span>
+  <h3 class="title">User Contributed Notes </h3>
+ </div>
+ <div class="note">There are no user contributed notes for this page.</div></section>    </section><!-- layout-content -->
+        <aside class='layout-menu'>
+
+        <ul class='parent-menu-list'>
+                                    <li>
+                <a href="refs.database.vendors.php">Vendor Specific Database Extensions</a>
+
+                                    <ul class='child-menu-list'>
+
+                                                <li class="current">
+                            <a href="book.cubrid.php" title="CUBRID">CUBRID</a>
+                        </li>
+                                                <li class="">
+                            <a href="book.dbase.php" title="dBase">dBase</a>
+                        </li>
+                                                <li class="">
+                            <a href="book.ibase.php" title="Firebird/InterBase">Firebird/InterBase</a>
+                        </li>
+                                                <li class="">
+                            <a href="book.ibm-db2.php" title="IBM DB2">IBM DB2</a>
+                        </li>
+                                                <li class="">
+                            <a href="book.mongodb.php" title="MongoDB">MongoDB</a>
+                        </li>
+                                                <li class="">
+                            <a href="set.mysqlinfo.php" title="MySQL">MySQL</a>
+                        </li>
+                                                <li class="">
+                            <a href="book.oci8.php" title="OCI8">OCI8</a>
+                        </li>
+                                                <li class="">
+                            <a href="book.pgsql.php" title="PostgreSQL">PostgreSQL</a>
+                        </li>
+                                                <li class="">
+                            <a href="book.sqlite3.php" title="SQLite3">SQLite3</a>
+                        </li>
+                                                <li class="">
+                            <a href="book.sqlsrv.php" title="SQLSRV">SQLSRV</a>
+                        </li>
+                        
+                    </ul>
+                
+            </li>
+                        
+                    </ul>
+    </aside>
+
+
+  </div><!-- layout -->
+
+  <footer>
+    <div class="container footer-content">
+      <div class="row-fluid">
+      <ul class="footmenu">
+        <li><a href="/manual/en/copyright.php">Copyright &copy; 2001-2025 The PHP Documentation Group</a></li>
+        <li><a href="/my.php">My PHP.net</a></li>
+        <li><a href="/contact.php">Contact</a></li>
+        <li><a href="/sites.php">Other PHP.net sites</a></li>
+        <li><a href="/privacy.php">Privacy policy</a></li>
+      </ul>
+      </div>
+    </div>
+  </footer>
+
+    
+<script src="/manual/en/js/ext/jquery-3.6.0.min.js"></script>
+<script src="/manual/en/js/ext/FuzzySearch.min.js"></script>
+<script src="/manual/en/js/ext/mousetrap.min.js"></script>
+<script src="/manual/en/js/ext/jquery.scrollTo.min.js"></script>
+<script src="/manual/en/js/search.js"></script>
+<script src="/manual/en/js/common.js"></script>
+<script type="module" src="/manual/en/js/interactive-examples.js"></script>
+
+<a id="toTop" href="javascript:;"><span id="toTopHover"></span><img width="40" height="40" alt="To Top" src="/images/to-top@2x.png"></a>
+
+<div id="search-modal__backdrop" class="search-modal__backdrop">
+  <div
+    role="dialog"
+    aria-label="Search modal"
+    id="search-modal"
+    class="search-modal"
+  >
+    <div class="search-modal__header">
+      <div class="search-modal__form">
+        <div class="search-modal__input-icon">
+          <!-- https://feathericons.com search -->
+          <svg xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+            width="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </div>
+        <input
+          type="search"
+          id="search-modal__input"
+          class="search-modal__input"
+          placeholder="Search docs"
+          aria-label="Search docs"
+        />
+      </div>
+
+      <button aria-label="Close" class="search-modal__close">
+        <!-- https://pictogrammers.com/library/mdi/icon/close/ -->
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+          width="24"
+          viewBox="0 0 24 24"
+        >
+          <path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"/>
+        </svg>
+      </button>
+    </div>
+    <div
+      role="listbox"
+      aria-label="Search results"
+      id="search-modal__results"
+      class="search-modal__results"
+    ></div>
+    <div class="search-modal__helper-text">
+      <div>
+        <kbd>↑</kbd> and <kbd>↓</kbd> to navigate •
+        <kbd>Enter</kbd> to select •
+        <kbd>Esc</kbd> to close
+      </div>
+      <div>
+        Press <kbd>Enter</kbd> without
+        selection to search using Google
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

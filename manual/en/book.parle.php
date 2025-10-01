@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+     
+  
+  <title>PHP: Parle - Manual</title>
+
+      <link rel="stylesheet" type="text/css" href="/manual/en/fonts/Fira/fira.css" media="screen">
+      <link rel="stylesheet" type="text/css" href="/manual/en/fonts/Font-Awesome/css/fontello.css" media="screen">
+      <link rel="stylesheet" type="text/css" href="/manual/en/styles/theme-base.css" media="screen">
+      <link rel="stylesheet" type="text/css" href="/manual/en/styles/theme-medium.css" media="screen">
+  
+ <link rel="icon" type="image/svg+xml" sizes="any" href="https://www.php.net/favicon.svg?v=2">
+ <link rel="icon" type="image/png" sizes="196x196" href="https://www.php.net/favicon-196x196.png?v=2">
+ <link rel="icon" type="image/png" sizes="32x32" href="https://www.php.net/favicon-32x32.png?v=2">
+ <link rel="icon" type="image/png" sizes="16x16" href="https://www.php.net/favicon-16x16.png?v=2">
+ <link rel="shortcut icon" href="https://www.php.net/favicon.ico?v=2">
+
+ <link rel="search" type="application/opensearchdescription+xml" href="https://www.php.net/phpnetimprovedsearch.src" title="Add PHP.net search">
+ <link rel="alternate" type="application/atom+xml" href="https://www.php.net/releases/feed.php" title="PHP Release feed">
+ <link rel="alternate" type="application/atom+xml" href="https://www.php.net/feed.atom" title="PHP: Hypertext Preprocessor">
+
+ <link rel="canonical" href="https://www.php.net/manual/en/book.parle.php">
+ <link rel="shorturl" href="https://www.php.net/parle">
+ <link rel="alternate" href="https://www.php.net/parle" hreflang="x-default">
+
+ <link rel="contents" href="https://www.php.net/manual/en/index.php">
+ <link rel="index" href="https://www.php.net/manual/en/refs.basic.text.php">
+ <link rel="prev" href="https://www.php.net/manual/en/function.commonmark-render-xml.php">
+ <link rel="next" href="https://www.php.net/manual/en/intro.parle.php">
+
+ <link rel="alternate" href="https://www.php.net/manual/en/book.parle.php" hreflang="en">
+ <link rel="alternate" href="https://www.php.net/manual/de/book.parle.php" hreflang="de">
+ <link rel="alternate" href="https://www.php.net/manual/es/book.parle.php" hreflang="es">
+ <link rel="alternate" href="https://www.php.net/manual/fr/book.parle.php" hreflang="fr">
+ <link rel="alternate" href="https://www.php.net/manual/it/book.parle.php" hreflang="it">
+ <link rel="alternate" href="https://www.php.net/manual/ja/book.parle.php" hreflang="ja">
+ <link rel="alternate" href="https://www.php.net/manual/pt_BR/book.parle.php" hreflang="pt_BR">
+ <link rel="alternate" href="https://www.php.net/manual/ru/book.parle.php" hreflang="ru">
+ <link rel="alternate" href="https://www.php.net/manual/tr/book.parle.php" hreflang="tr">
+ <link rel="alternate" href="https://www.php.net/manual/uk/book.parle.php" hreflang="uk">
+ <link rel="alternate" href="https://www.php.net/manual/zh/book.parle.php" hreflang="zh">
+
+<link rel="stylesheet" type="text/css" href="/manual/en/fonts/Fira/fira.css" media="screen">
+<link rel="stylesheet" type="text/css" href="/manual/en/fonts/Font-Awesome/css/fontello.css" media="screen">
+<link rel="stylesheet" type="text/css" href="/manual/en/styles/theme-base.css" media="screen">
+<link rel="stylesheet" type="text/css" href="/manual/en/styles/theme-medium.css" media="screen">
+
+
+ 
+
+<meta name="Description" content="Parsing and lexing" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@official_php" />
+<meta name="twitter:title" content="PHP: Parle - Manual" />
+<meta name="twitter:description" content="Parsing and lexing" />
+<meta name="twitter:creator" content="@official_php" />
+<meta name="twitter:image:src" content="https://www.php.net/images/meta-image.png" />
+
+<meta itemprop="name" content="PHP: Parle - Manual" />
+<meta itemprop="description" content="Parsing and lexing" />
+<meta itemprop="image" content="https://www.php.net/images/meta-image.png" />
+
+<meta property="og:image" content="https://www.php.net/images/meta-image.png" />
+<meta property="og:description" content="Parsing and lexing" />
+
+<link href="https://fosstodon.org/@php" rel="me" />
+<!-- Matomo -->
+<script>
+    var _paq = window._paq = window._paq || [];
+    /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+    _paq.push(["setDoNotTrack", true]);
+    _paq.push(["disableCookies"]);
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+        var u="https://analytics.php.net/";
+        _paq.push(['setTrackerUrl', u+'matomo.php']);
+        _paq.push(['setSiteId', '1']);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+    })();
+</script>
+<!-- End Matomo Code -->
+</head>
+<body class="docs ">
+
+<nav class="navbar navbar-fixed-top">
+  <div class="navbar__inner">
+    <a href="/" aria-label="PHP Home" class="navbar__brand">
+      <img
+        src="/images/logos/php-logo-white.svg"
+        aria-hidden="true"
+        width="80"
+        height="40"
+      >
+    </a>
+
+    <div
+      id="navbar__offcanvas"
+      tabindex="-1"
+      class="navbar__offcanvas"
+      aria-label="Menu"
+    >
+      <button
+        id="navbar__close-button"
+        class="navbar__icon-item navbar_icon-item--visually-aligned navbar__close-button"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg>
+      </button>
+
+      <ul class="navbar__nav">
+                            <li class="navbar__item">
+              <a
+                href="/downloads.php"
+                                class="navbar__link  "
+              >
+                                  Downloads                              </a>
+          </li>
+                            <li class="navbar__item">
+              <a
+                href="/docs.php"
+                aria-current="page"                class="navbar__link navbar__link--active "
+              >
+                                  Documentation                              </a>
+          </li>
+                            <li class="navbar__item">
+              <a
+                href="/get-involved.php"
+                                class="navbar__link  "
+              >
+                                  Get Involved                              </a>
+          </li>
+                            <li class="navbar__item">
+              <a
+                href="/support.php"
+                                class="navbar__link  "
+              >
+                                  Help                              </a>
+          </li>
+                            <li class="navbar__item">
+              <a
+                href="/releases/8.4/index.php"
+                                class="navbar__link  navbar__release"
+              >
+                                  <img src="/images/php8/logo_php8_4.svg" alt="PHP 8.4">
+                              </a>
+          </li>
+              </ul>
+    </div>
+
+    <div class="navbar__right">
+      
+      <!-- Desktop default search -->
+      <form
+        action="/manual-lookup.php"
+        class="navbar__search-form"
+      >
+        <label for="navbar__search-input" aria-label="Search docs">
+          <svg
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+  width="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="11" cy="11" r="8"></circle>
+  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+</svg>        </label>
+        <input
+          type="search"
+          name="pattern"
+          id="navbar__search-input"
+          class="navbar__search-input"
+          placeholder="Search docs"
+          accesskey="s"
+        >
+        <input type="hidden" name="scope" value="quickref">
+      </form>
+
+      <!-- Desktop encanced search -->
+      <button
+        id="navbar__search-button"
+        class="navbar__search-button"
+        hidden
+      >
+        <svg
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+  width="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="11" cy="11" r="8"></circle>
+  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+</svg>        Search docs
+      </button>
+
+      <!-- Mobile default items -->
+      <a
+        id="navbar__search-link"
+        href="/lookup-form.php"
+        aria-label="Search docs"
+        class="navbar__icon-item navbar__search-link"
+      >
+        <svg
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+  width="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="11" cy="11" r="8"></circle>
+  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+</svg>      </a>
+      <a
+        id="navbar__menu-link"
+        href="/menu.php"
+        aria-label="Menu"
+        class="navbar__icon-item navbar_icon-item--visually-aligned navbar_menu-link"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+  width="24"
+  viewBox="0 0 24 24"
+  fill="currentColor"
+>
+  <path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" />
+</svg>      </a>
+
+      <!-- Mobile enhanced items -->
+      <button
+        id="navbar__search-button-mobile"
+        aria-label="Search docs"
+        class="navbar__icon-item navbar__search-button-mobile"
+        hidden
+      >
+        <svg
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+  width="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="11" cy="11" r="8"></circle>
+  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+</svg>      </button>
+      <button
+        id="navbar__menu-button"
+        aria-label="Menu"
+        class="navbar__icon-item navbar_icon-item--visually-aligned"
+        hidden
+      >
+        <svg xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+  width="24"
+  viewBox="0 0 24 24"
+  fill="currentColor"
+>
+  <path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" />
+</svg>      </button>
+    </div>
+
+    <div
+      id="navbar__backdrop"
+      class="navbar__backdrop"
+    ></div>
+  </div>
+
+  <div id="flash-message"></div>
+</nav>
+<div class="headsup"><a href='/index.php#2025-09-25-3'>PHP 8.5.0 RC 1 available for testing</a></div>
+<nav id="trick"><div><dl>
+<dt><a href='/manual/en/getting-started.php'>Getting Started</a></dt>
+	<dd><a href='/manual/en/introduction.php'>Introduction</a></dd>
+	<dd><a href='/manual/en/tutorial.php'>A simple tutorial</a></dd>
+<dt><a href='/manual/en/langref.php'>Language Reference</a></dt>
+	<dd><a href='/manual/en/language.basic-syntax.php'>Basic syntax</a></dd>
+	<dd><a href='/manual/en/language.types.php'>Types</a></dd>
+	<dd><a href='/manual/en/language.variables.php'>Variables</a></dd>
+	<dd><a href='/manual/en/language.constants.php'>Constants</a></dd>
+	<dd><a href='/manual/en/language.expressions.php'>Expressions</a></dd>
+	<dd><a href='/manual/en/language.operators.php'>Operators</a></dd>
+	<dd><a href='/manual/en/language.control-structures.php'>Control Structures</a></dd>
+	<dd><a href='/manual/en/language.functions.php'>Functions</a></dd>
+	<dd><a href='/manual/en/language.oop5.php'>Classes and Objects</a></dd>
+	<dd><a href='/manual/en/language.namespaces.php'>Namespaces</a></dd>
+	<dd><a href='/manual/en/language.enumerations.php'>Enumerations</a></dd>
+	<dd><a href='/manual/en/language.errors.php'>Errors</a></dd>
+	<dd><a href='/manual/en/language.exceptions.php'>Exceptions</a></dd>
+	<dd><a href='/manual/en/language.fibers.php'>Fibers</a></dd>
+	<dd><a href='/manual/en/language.generators.php'>Generators</a></dd>
+	<dd><a href='/manual/en/language.attributes.php'>Attributes</a></dd>
+	<dd><a href='/manual/en/language.references.php'>References Explained</a></dd>
+	<dd><a href='/manual/en/reserved.variables.php'>Predefined Variables</a></dd>
+	<dd><a href='/manual/en/reserved.exceptions.php'>Predefined Exceptions</a></dd>
+	<dd><a href='/manual/en/reserved.interfaces.php'>Predefined Interfaces and Classes</a></dd>
+	<dd><a href='/manual/en/reserved.attributes.php'>Predefined Attributes</a></dd>
+	<dd><a href='/manual/en/context.php'>Context options and parameters</a></dd>
+	<dd><a href='/manual/en/wrappers.php'>Supported Protocols and Wrappers</a></dd>
+</dl>
+<dl>
+<dt><a href='/manual/en/security.php'>Security</a></dt>
+	<dd><a href='/manual/en/security.intro.php'>Introduction</a></dd>
+	<dd><a href='/manual/en/security.general.php'>General considerations</a></dd>
+	<dd><a href='/manual/en/security.cgi-bin.php'>Installed as CGI binary</a></dd>
+	<dd><a href='/manual/en/security.apache.php'>Installed as an Apache module</a></dd>
+	<dd><a href='/manual/en/security.sessions.php'>Session Security</a></dd>
+	<dd><a href='/manual/en/security.filesystem.php'>Filesystem Security</a></dd>
+	<dd><a href='/manual/en/security.database.php'>Database Security</a></dd>
+	<dd><a href='/manual/en/security.errors.php'>Error Reporting</a></dd>
+	<dd><a href='/manual/en/security.variables.php'>User Submitted Data</a></dd>
+	<dd><a href='/manual/en/security.hiding.php'>Hiding PHP</a></dd>
+	<dd><a href='/manual/en/security.current.php'>Keeping Current</a></dd>
+<dt><a href='/manual/en/features.php'>Features</a></dt>
+	<dd><a href='/manual/en/features.http-auth.php'>HTTP authentication with PHP</a></dd>
+	<dd><a href='/manual/en/features.cookies.php'>Cookies</a></dd>
+	<dd><a href='/manual/en/features.sessions.php'>Sessions</a></dd>
+	<dd><a href='/manual/en/features.file-upload.php'>Handling file uploads</a></dd>
+	<dd><a href='/manual/en/features.remote-files.php'>Using remote files</a></dd>
+	<dd><a href='/manual/en/features.connection-handling.php'>Connection handling</a></dd>
+	<dd><a href='/manual/en/features.persistent-connections.php'>Persistent Database Connections</a></dd>
+	<dd><a href='/manual/en/features.commandline.php'>Command line usage</a></dd>
+	<dd><a href='/manual/en/features.gc.php'>Garbage Collection</a></dd>
+	<dd><a href='/manual/en/features.dtrace.php'>DTrace Dynamic Tracing</a></dd>
+</dl>
+<dl>
+<dt><a href='/manual/en/funcref.php'>Function Reference</a></dt>
+	<dd><a href='/manual/en/refs.basic.php.php'>Affecting PHP's Behaviour</a></dd>
+	<dd><a href='/manual/en/refs.utilspec.audio.php'>Audio Formats Manipulation</a></dd>
+	<dd><a href='/manual/en/refs.remote.auth.php'>Authentication Services</a></dd>
+	<dd><a href='/manual/en/refs.utilspec.cmdline.php'>Command Line Specific Extensions</a></dd>
+	<dd><a href='/manual/en/refs.compression.php'>Compression and Archive Extensions</a></dd>
+	<dd><a href='/manual/en/refs.crypto.php'>Cryptography Extensions</a></dd>
+	<dd><a href='/manual/en/refs.database.php'>Database Extensions</a></dd>
+	<dd><a href='/manual/en/refs.calendar.php'>Date and Time Related Extensions</a></dd>
+	<dd><a href='/manual/en/refs.fileprocess.file.php'>File System Related Extensions</a></dd>
+	<dd><a href='/manual/en/refs.international.php'>Human Language and Character Encoding Support</a></dd>
+	<dd><a href='/manual/en/refs.utilspec.image.php'>Image Processing and Generation</a></dd>
+	<dd><a href='/manual/en/refs.remote.mail.php'>Mail Related Extensions</a></dd>
+	<dd><a href='/manual/en/refs.math.php'>Mathematical Extensions</a></dd>
+	<dd><a href='/manual/en/refs.utilspec.nontext.php'>Non-Text MIME Output</a></dd>
+	<dd><a href='/manual/en/refs.fileprocess.process.php'>Process Control Extensions</a></dd>
+	<dd><a href='/manual/en/refs.basic.other.php'>Other Basic Extensions</a></dd>
+	<dd><a href='/manual/en/refs.remote.other.php'>Other Services</a></dd>
+	<dd><a href='/manual/en/refs.search.php'>Search Engine Extensions</a></dd>
+	<dd><a href='/manual/en/refs.utilspec.server.php'>Server Specific Extensions</a></dd>
+	<dd><a href='/manual/en/refs.basic.session.php'>Session Extensions</a></dd>
+	<dd><a href='/manual/en/refs.basic.text.php'>Text Processing</a></dd>
+	<dd><a href='/manual/en/refs.basic.vartype.php'>Variable and Type Related Extensions</a></dd>
+	<dd><a href='/manual/en/refs.webservice.php'>Web Services</a></dd>
+	<dd><a href='/manual/en/refs.utilspec.windows.php'>Windows Only Extensions</a></dd>
+	<dd><a href='/manual/en/refs.xml.php'>XML Manipulation</a></dd>
+	<dd><a href='/manual/en/refs.ui.php'>GUI Extensions</a></dd>
+</dl>
+<dl>
+<dt>Keyboard Shortcuts</dt><dt>?</dt>
+<dd>This help</dd>
+<dt>j</dt>
+<dd>Next menu item</dd>
+<dt>k</dt>
+<dd>Previous menu item</dd>
+<dt>g p</dt>
+<dd>Previous man page</dd>
+<dt>g n</dt>
+<dd>Next man page</dd>
+<dt>G</dt>
+<dd>Scroll to bottom</dd>
+<dt>g g</dt>
+<dd>Scroll to top</dd>
+<dt>g h</dt>
+<dd>Goto homepage</dd>
+<dt>g s</dt>
+<dd>Goto search<br>(current page)</dd>
+<dt>/</dt>
+<dd>Focus search box</dd>
+</dl></div></nav>
+<div id="goto">
+    <div class="search">
+         <div class="text"></div>
+         <div class="results"><ul></ul></div>
+   </div>
+</div>
+
+  <div id="breadcrumbs" class="clearfix">
+    <div id="breadcrumbs-inner">
+          <div class="next">
+        <a href="intro.parle.php">
+          Introduction &raquo;
+        </a>
+      </div>
+              <div class="prev">
+        <a href="function.commonmark-render-xml.php">
+          &laquo; CommonMark\Render\XML        </a>
+      </div>
+          <ul>
+            <li><a href='index.php'>PHP Manual</a></li>      <li><a href='funcref.php'>Function Reference</a></li>      <li><a href='refs.basic.text.php'>Text Processing</a></li>      </ul>
+    </div>
+  </div>
+
+
+
+
+<div id="layout" class="clearfix">
+  <section id="layout-content">
+  <div class="page-tools">
+    <div class="change-language">
+      <form action="/manual/change.php" method="get" id="changelang" name="changelang">
+        <fieldset>
+          <label for="changelang-langs">Change language:</label>
+          <select onchange="document.changelang.submit()" name="page" id="changelang-langs">
+            <option value='en/book.parle.php' selected="selected">English</option>
+            <option value='de/book.parle.php'>German</option>
+            <option value='es/book.parle.php'>Spanish</option>
+            <option value='fr/book.parle.php'>French</option>
+            <option value='it/book.parle.php'>Italian</option>
+            <option value='ja/book.parle.php'>Japanese</option>
+            <option value='pt_BR/book.parle.php'>Brazilian Portuguese</option>
+            <option value='ru/book.parle.php'>Russian</option>
+            <option value='tr/book.parle.php'>Turkish</option>
+            <option value='uk/book.parle.php'>Ukrainian</option>
+            <option value='zh/book.parle.php'>Chinese (Simplified)</option>
+            <option value='help-translate.php'>Other</option>
+          </select>
+        </fieldset>
+      </form>
+    </div>
+  </div><div id="book.parle" class="book">
+ 
+ <h1 class="title">Parsing and lexing</h1>
+ 
+
+ 
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+<ul class="chunklist chunklist_book"><li><a href="intro.parle.php">Introduction</a></li><li><a href="parle.setup.php">Installing/Configuring</a><ul class="chunklist chunklist_book chunklist_children"><li><a href="parle.requirements.php">Requirements</a></li><li><a href="parle.installation.php">Installation</a></li></ul></li><li><a href="parle.constants.php">Predefined Constants</a></li><li><a href="parle.pattern.matching.php">Pattern matching</a> — Parle pattern matching</li><li><a href="parle.examples.php">Examples</a><ul class="chunklist chunklist_book chunklist_children"><li><a href="parle.examples.lexer.php">Lexer examples</a></li><li><a href="parle.examples.parser.php">Parser examples</a></li></ul></li><li><a href="class.parle-lexer.php">Parle\Lexer</a> — The Parle\Lexer class<ul class="chunklist chunklist_book chunklist_children"><li><a href="parle-lexer.advance.php">Parle\Lexer::advance</a> — Process next lexer rule</li><li><a href="parle-lexer.build.php">Parle\Lexer::build</a> — Finalize the lexer rule set</li><li><a href="parle-lexer.callout.php">Parle\Lexer::callout</a> — Define token callback</li><li><a href="parle-lexer.consume.php">Parle\Lexer::consume</a> — Pass the data for processing</li><li><a href="parle-lexer.dump.php">Parle\Lexer::dump</a> — Dump the state machine</li><li><a href="parle-lexer.gettoken.php">Parle\Lexer::getToken</a> — Retrieve the current token</li><li><a href="parle-lexer.insertmacro.php">Parle\Lexer::insertMacro</a> — Insert regex macro</li><li><a href="parle-lexer.push.php">Parle\Lexer::push</a> — Add a lexer rule</li><li><a href="parle-lexer.reset.php">Parle\Lexer::reset</a> — Reset lexer</li></ul></li><li><a href="class.parle-rlexer.php">Parle\RLexer</a> — The Parle\RLexer class<ul class="chunklist chunklist_book chunklist_children"><li><a href="parle-rlexer.advance.php">Parle\RLexer::advance</a> — Process next lexer rule</li><li><a href="parle-rlexer.build.php">Parle\RLexer::build</a> — Finalize the lexer rule set</li><li><a href="parle-rlexer.callout.php">Parle\RLexer::callout</a> — Define token callback</li><li><a href="parle-rlexer.consume.php">Parle\RLexer::consume</a> — Pass the data for processing</li><li><a href="parle-rlexer.dump.php">Parle\RLexer::dump</a> — Dump the state machine</li><li><a href="parle-rlexer.gettoken.php">Parle\RLexer::getToken</a> — Retrieve the current token</li><li><a href="parle-rlexer.insertmacro.php">Parle\RLexer::insertMacro</a> — Insert regex macro</li><li><a href="parle-rlexer.push.php">Parle\RLexer::push</a> — Add a lexer rule</li><li><a href="parle-rlexer.pushstate.php">Parle\RLexer::pushState</a> — Push a new start state</li><li><a href="parle-rlexer.reset.php">Parle\RLexer::reset</a> — Reset lexer</li></ul></li><li><a href="class.parle-parser.php">Parle\Parser</a> — The Parle\Parser class<ul class="chunklist chunklist_book chunklist_children"><li><a href="parle-parser.advance.php">Parle\Parser::advance</a> — Process next parser rule</li><li><a href="parle-parser.build.php">Parle\Parser::build</a> — Finalize the grammar rules</li><li><a href="parle-parser.consume.php">Parle\Parser::consume</a> — Consume the data for processing</li><li><a href="parle-parser.dump.php">Parle\Parser::dump</a> — Dump the grammar</li><li><a href="parle-parser.errorinfo.php">Parle\Parser::errorInfo</a> — Retrieve the error information</li><li><a href="parle-parser.left.php">Parle\Parser::left</a> — Declare a token with left-associativity</li><li><a href="parle-parser.nonassoc.php">Parle\Parser::nonassoc</a> — Declare a token with no associativity</li><li><a href="parle-parser.precedence.php">Parle\Parser::precedence</a> — Declare a precedence rule</li><li><a href="parle-parser.push.php">Parle\Parser::push</a> — Add a grammar rule</li><li><a href="parle-parser.reset.php">Parle\Parser::reset</a> — Reset parser state</li><li><a href="parle-parser.right.php">Parle\Parser::right</a> — Declare a token with right-associativity</li><li><a href="parle-parser.sigil.php">Parle\Parser::sigil</a> — Retrieve a matching part of a rule</li><li><a href="parle-parser.sigilcount.php">Parle\Parser::sigilCount</a> — Number of elements in matched rule</li><li><a href="parle-parser.sigilname.php">Parle\Parser::sigilName</a> — Retrieve a rule or token name</li><li><a href="parle-parser.token.php">Parle\Parser::token</a> — Declare a token</li><li><a href="parle-parser.tokenid.php">Parle\Parser::tokenId</a> — Get token id</li><li><a href="parle-parser.trace.php">Parle\Parser::trace</a> — Trace the parser operation</li><li><a href="parle-parser.validate.php">Parle\Parser::validate</a> — Validate input</li></ul></li><li><a href="class.parle-rparser.php">Parle\RParser</a> — The Parle\RParser class<ul class="chunklist chunklist_book chunklist_children"><li><a href="parle-rparser.advance.php">Parle\RParser::advance</a> — Process next parser rule</li><li><a href="parle-rparser.build.php">Parle\RParser::build</a> — Finalize the grammar rules</li><li><a href="parle-rparser.consume.php">Parle\RParser::consume</a> — Consume the data for processing</li><li><a href="parle-rparser.dump.php">Parle\RParser::dump</a> — Dump the grammar</li><li><a href="parle-rparser.errorinfo.php">Parle\RParser::errorInfo</a> — Retrieve the error information</li><li><a href="parle-rparser.left.php">Parle\RParser::left</a> — Declare a token with left-associativity</li><li><a href="parle-rparser.nonassoc.php">Parle\RParser::nonassoc</a> — Declare a token with no associativity</li><li><a href="parle-rparser.precedence.php">Parle\RParser::precedence</a> — Declare a precedence rule</li><li><a href="parle-rparser.push.php">Parle\RParser::push</a> — Add a grammar rule</li><li><a href="parle-rparser.reset.php">Parle\RParser::reset</a> — Reset parser state</li><li><a href="parle-rparser.right.php">Parle\RParser::right</a> — Declare a token with right-associativity</li><li><a href="parle-rparser.sigil.php">Parle\RParser::sigil</a> — Retrieve a matching part of a rule</li><li><a href="parle-rparser.sigilcount.php">Parle\RParser::sigilCount</a> — Number of elements in matched rule</li><li><a href="parle-rparser.sigilname.php">Parle\RParser::sigilName</a> — Retrieve a rule or token name</li><li><a href="parle-rparser.token.php">Parle\RParser::token</a> — Declare a token</li><li><a href="parle-rparser.tokenid.php">Parle\RParser::tokenId</a> — Get token id</li><li><a href="parle-rparser.trace.php">Parle\RParser::trace</a> — Trace the parser operation</li><li><a href="parle-rparser.validate.php">Parle\RParser::validate</a> — Validate input</li></ul></li><li><a href="class.parle-stack.php">Parle\Stack</a> — The Parle\Stack class<ul class="chunklist chunklist_book chunklist_children"><li><a href="parle-stack.pop.php">Parle\Stack::pop</a> — Pop an item from the stack</li><li><a href="parle-stack.push.php">Parle\Stack::push</a> — Push an item into the stack</li></ul></li><li><a href="class.parle-token.php">Parle\Token</a> — The Parle\Token class</li><li><a href="class.parle-errorinfo.php">Parle\ErrorInfo</a> — The Parle\ErrorInfo class</li><li><a href="class.parle-lexerexception.php">Parle\LexerException</a> — The Parle\LexerException class</li><li><a href="class.parle-parserexception.php">Parle\ParserException</a> — The Parle\ParserException class</li></ul></div>    <div class="contribute">
+      <h3 class="title">Found A Problem?</h3>
+      <div>
+         
+      </div>
+      <div class="edit-bug">
+        <a href="https://github.com/php/doc-base/blob/master/README.md" title="This will take you to our contribution guidelines on GitHub" target="_blank" rel="noopener noreferrer">Learn How To Improve This Page</a>
+        •
+        <a href="https://github.com/php/doc-en/blob/master/reference/parle/book.xml">Submit a Pull Request</a>
+        •
+        <a href="https://github.com/php/doc-en/issues/new?body=From%20manual%20page:%20https:%2F%2Fphp.net%2Fbook.parle%0A%0A---">Report a Bug</a>
+      </div>
+    </div><section id="usernotes">
+ <div class="head">
+  <span class="action"><a href="/manual/add-note.php?sect=book.parle&amp;repo=en&amp;redirect=https://www.php.net/manual/en/book.parle.php">＋<small>add a note</small></a></span>
+  <h3 class="title">User Contributed Notes </h3>
+ </div>
+ <div class="note">There are no user contributed notes for this page.</div></section>    </section><!-- layout-content -->
+        <aside class='layout-menu'>
+
+        <ul class='parent-menu-list'>
+                                    <li>
+                <a href="refs.basic.text.php">Text Processing</a>
+
+                                    <ul class='child-menu-list'>
+
+                                                <li class="">
+                            <a href="book.cmark.php" title="CommonMark">CommonMark</a>
+                        </li>
+                                                <li class="current">
+                            <a href="book.parle.php" title="Parle">Parle</a>
+                        </li>
+                                                <li class="">
+                            <a href="book.pcre.php" title="PCRE">PCRE</a>
+                        </li>
+                                                <li class="">
+                            <a href="book.ssdeep.php" title="ssdeep">ssdeep</a>
+                        </li>
+                                                <li class="">
+                            <a href="book.strings.php" title="Strings">Strings</a>
+                        </li>
+                        
+                    </ul>
+                
+            </li>
+                        
+                    </ul>
+    </aside>
+
+
+  </div><!-- layout -->
+
+  <footer>
+    <div class="container footer-content">
+      <div class="row-fluid">
+      <ul class="footmenu">
+        <li><a href="/manual/en/copyright.php">Copyright &copy; 2001-2025 The PHP Documentation Group</a></li>
+        <li><a href="/my.php">My PHP.net</a></li>
+        <li><a href="/contact.php">Contact</a></li>
+        <li><a href="/sites.php">Other PHP.net sites</a></li>
+        <li><a href="/privacy.php">Privacy policy</a></li>
+      </ul>
+      </div>
+    </div>
+  </footer>
+
+    
+<script src="/manual/en/js/ext/jquery-3.6.0.min.js"></script>
+<script src="/manual/en/js/ext/FuzzySearch.min.js"></script>
+<script src="/manual/en/js/ext/mousetrap.min.js"></script>
+<script src="/manual/en/js/ext/jquery.scrollTo.min.js"></script>
+<script src="/manual/en/js/search.js"></script>
+<script src="/manual/en/js/common.js"></script>
+<script type="module" src="/manual/en/js/interactive-examples.js"></script>
+
+<a id="toTop" href="javascript:;"><span id="toTopHover"></span><img width="40" height="40" alt="To Top" src="/images/to-top@2x.png"></a>
+
+<div id="search-modal__backdrop" class="search-modal__backdrop">
+  <div
+    role="dialog"
+    aria-label="Search modal"
+    id="search-modal"
+    class="search-modal"
+  >
+    <div class="search-modal__header">
+      <div class="search-modal__form">
+        <div class="search-modal__input-icon">
+          <!-- https://feathericons.com search -->
+          <svg xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+            width="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </div>
+        <input
+          type="search"
+          id="search-modal__input"
+          class="search-modal__input"
+          placeholder="Search docs"
+          aria-label="Search docs"
+        />
+      </div>
+
+      <button aria-label="Close" class="search-modal__close">
+        <!-- https://pictogrammers.com/library/mdi/icon/close/ -->
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+          width="24"
+          viewBox="0 0 24 24"
+        >
+          <path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"/>
+        </svg>
+      </button>
+    </div>
+    <div
+      role="listbox"
+      aria-label="Search results"
+      id="search-modal__results"
+      class="search-modal__results"
+    ></div>
+    <div class="search-modal__helper-text">
+      <div>
+        <kbd>↑</kbd> and <kbd>↓</kbd> to navigate •
+        <kbd>Enter</kbd> to select •
+        <kbd>Esc</kbd> to close
+      </div>
+      <div>
+        Press <kbd>Enter</kbd> without
+        selection to search using Google
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

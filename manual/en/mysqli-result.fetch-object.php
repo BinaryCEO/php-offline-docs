@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+     
+  
+  <title>PHP: mysqli_result::fetch_object - Manual</title>
+
+      <link rel="stylesheet" type="text/css" href="/manual/en/fonts/Fira/fira.css" media="screen">
+      <link rel="stylesheet" type="text/css" href="/manual/en/fonts/Font-Awesome/css/fontello.css" media="screen">
+      <link rel="stylesheet" type="text/css" href="/manual/en/styles/theme-base.css" media="screen">
+      <link rel="stylesheet" type="text/css" href="/manual/en/styles/theme-medium.css" media="screen">
+  
+ <link rel="icon" type="image/svg+xml" sizes="any" href="https://www.php.net/favicon.svg?v=2">
+ <link rel="icon" type="image/png" sizes="196x196" href="https://www.php.net/favicon-196x196.png?v=2">
+ <link rel="icon" type="image/png" sizes="32x32" href="https://www.php.net/favicon-32x32.png?v=2">
+ <link rel="icon" type="image/png" sizes="16x16" href="https://www.php.net/favicon-16x16.png?v=2">
+ <link rel="shortcut icon" href="https://www.php.net/favicon.ico?v=2">
+
+ <link rel="search" type="application/opensearchdescription+xml" href="https://www.php.net/phpnetimprovedsearch.src" title="Add PHP.net search">
+ <link rel="alternate" type="application/atom+xml" href="https://www.php.net/releases/feed.php" title="PHP Release feed">
+ <link rel="alternate" type="application/atom+xml" href="https://www.php.net/feed.atom" title="PHP: Hypertext Preprocessor">
+
+ <link rel="canonical" href="https://www.php.net/manual/en/mysqli-result.fetch-object.php">
+ <link rel="shorturl" href="https://www.php.net/manual/en/mysqli-result.fetch-object.php">
+ <link rel="alternate" href="https://www.php.net/manual/en/mysqli-result.fetch-object.php" hreflang="x-default">
+
+ <link rel="contents" href="https://www.php.net/manual/en/index.php">
+ <link rel="index" href="https://www.php.net/manual/en/class.mysqli-result.php">
+ <link rel="prev" href="https://www.php.net/manual/en/mysqli-result.fetch-fields.php">
+ <link rel="next" href="https://www.php.net/manual/en/mysqli-result.fetch-row.php">
+
+ <link rel="alternate" href="https://www.php.net/manual/en/mysqli-result.fetch-object.php" hreflang="en">
+ <link rel="alternate" href="https://www.php.net/manual/de/mysqli-result.fetch-object.php" hreflang="de">
+ <link rel="alternate" href="https://www.php.net/manual/es/mysqli-result.fetch-object.php" hreflang="es">
+ <link rel="alternate" href="https://www.php.net/manual/fr/mysqli-result.fetch-object.php" hreflang="fr">
+ <link rel="alternate" href="https://www.php.net/manual/it/mysqli-result.fetch-object.php" hreflang="it">
+ <link rel="alternate" href="https://www.php.net/manual/ja/mysqli-result.fetch-object.php" hreflang="ja">
+ <link rel="alternate" href="https://www.php.net/manual/pt_BR/mysqli-result.fetch-object.php" hreflang="pt_BR">
+ <link rel="alternate" href="https://www.php.net/manual/ru/mysqli-result.fetch-object.php" hreflang="ru">
+ <link rel="alternate" href="https://www.php.net/manual/tr/mysqli-result.fetch-object.php" hreflang="tr">
+ <link rel="alternate" href="https://www.php.net/manual/uk/mysqli-result.fetch-object.php" hreflang="uk">
+ <link rel="alternate" href="https://www.php.net/manual/zh/mysqli-result.fetch-object.php" hreflang="zh">
+
+<link rel="stylesheet" type="text/css" href="/manual/en/fonts/Fira/fira.css" media="screen">
+<link rel="stylesheet" type="text/css" href="/manual/en/fonts/Font-Awesome/css/fontello.css" media="screen">
+<link rel="stylesheet" type="text/css" href="/manual/en/styles/theme-base.css" media="screen">
+<link rel="stylesheet" type="text/css" href="/manual/en/styles/theme-medium.css" media="screen">
+
+
+ 
+
+<meta name="Description" content="Fetch the next row of a result set as an object" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@official_php" />
+<meta name="twitter:title" content="PHP: mysqli_result::fetch_object - Manual" />
+<meta name="twitter:description" content="Fetch the next row of a result set as an object" />
+<meta name="twitter:creator" content="@official_php" />
+<meta name="twitter:image:src" content="https://www.php.net/images/meta-image.png" />
+
+<meta itemprop="name" content="PHP: mysqli_result::fetch_object - Manual" />
+<meta itemprop="description" content="Fetch the next row of a result set as an object" />
+<meta itemprop="image" content="https://www.php.net/images/meta-image.png" />
+
+<meta property="og:image" content="https://www.php.net/images/meta-image.png" />
+<meta property="og:description" content="Fetch the next row of a result set as an object" />
+
+<link href="https://fosstodon.org/@php" rel="me" />
+<!-- Matomo -->
+<script>
+    var _paq = window._paq = window._paq || [];
+    /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+    _paq.push(["setDoNotTrack", true]);
+    _paq.push(["disableCookies"]);
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+        var u="https://analytics.php.net/";
+        _paq.push(['setTrackerUrl', u+'matomo.php']);
+        _paq.push(['setSiteId', '1']);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+    })();
+</script>
+<!-- End Matomo Code -->
+</head>
+<body class="docs ">
+
+<nav class="navbar navbar-fixed-top">
+  <div class="navbar__inner">
+    <a href="/" aria-label="PHP Home" class="navbar__brand">
+      <img
+        src="/images/logos/php-logo-white.svg"
+        aria-hidden="true"
+        width="80"
+        height="40"
+      >
+    </a>
+
+    <div
+      id="navbar__offcanvas"
+      tabindex="-1"
+      class="navbar__offcanvas"
+      aria-label="Menu"
+    >
+      <button
+        id="navbar__close-button"
+        class="navbar__icon-item navbar_icon-item--visually-aligned navbar__close-button"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg>
+      </button>
+
+      <ul class="navbar__nav">
+                            <li class="navbar__item">
+              <a
+                href="/downloads.php"
+                                class="navbar__link  "
+              >
+                                  Downloads                              </a>
+          </li>
+                            <li class="navbar__item">
+              <a
+                href="/docs.php"
+                aria-current="page"                class="navbar__link navbar__link--active "
+              >
+                                  Documentation                              </a>
+          </li>
+                            <li class="navbar__item">
+              <a
+                href="/get-involved.php"
+                                class="navbar__link  "
+              >
+                                  Get Involved                              </a>
+          </li>
+                            <li class="navbar__item">
+              <a
+                href="/support.php"
+                                class="navbar__link  "
+              >
+                                  Help                              </a>
+          </li>
+                            <li class="navbar__item">
+              <a
+                href="/releases/8.4/index.php"
+                                class="navbar__link  navbar__release"
+              >
+                                  <img src="/images/php8/logo_php8_4.svg" alt="PHP 8.4">
+                              </a>
+          </li>
+              </ul>
+    </div>
+
+    <div class="navbar__right">
+      
+      <!-- Desktop default search -->
+      <form
+        action="/manual-lookup.php"
+        class="navbar__search-form"
+      >
+        <label for="navbar__search-input" aria-label="Search docs">
+          <svg
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+  width="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="11" cy="11" r="8"></circle>
+  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+</svg>        </label>
+        <input
+          type="search"
+          name="pattern"
+          id="navbar__search-input"
+          class="navbar__search-input"
+          placeholder="Search docs"
+          accesskey="s"
+        >
+        <input type="hidden" name="scope" value="quickref">
+      </form>
+
+      <!-- Desktop encanced search -->
+      <button
+        id="navbar__search-button"
+        class="navbar__search-button"
+        hidden
+      >
+        <svg
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+  width="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="11" cy="11" r="8"></circle>
+  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+</svg>        Search docs
+      </button>
+
+      <!-- Mobile default items -->
+      <a
+        id="navbar__search-link"
+        href="/lookup-form.php"
+        aria-label="Search docs"
+        class="navbar__icon-item navbar__search-link"
+      >
+        <svg
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+  width="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="11" cy="11" r="8"></circle>
+  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+</svg>      </a>
+      <a
+        id="navbar__menu-link"
+        href="/menu.php"
+        aria-label="Menu"
+        class="navbar__icon-item navbar_icon-item--visually-aligned navbar_menu-link"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+  width="24"
+  viewBox="0 0 24 24"
+  fill="currentColor"
+>
+  <path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" />
+</svg>      </a>
+
+      <!-- Mobile enhanced items -->
+      <button
+        id="navbar__search-button-mobile"
+        aria-label="Search docs"
+        class="navbar__icon-item navbar__search-button-mobile"
+        hidden
+      >
+        <svg
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+  width="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="11" cy="11" r="8"></circle>
+  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+</svg>      </button>
+      <button
+        id="navbar__menu-button"
+        aria-label="Menu"
+        class="navbar__icon-item navbar_icon-item--visually-aligned"
+        hidden
+      >
+        <svg xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+  width="24"
+  viewBox="0 0 24 24"
+  fill="currentColor"
+>
+  <path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" />
+</svg>      </button>
+    </div>
+
+    <div
+      id="navbar__backdrop"
+      class="navbar__backdrop"
+    ></div>
+  </div>
+
+  <div id="flash-message"></div>
+</nav>
+<div class="headsup"><a href='/index.php#2025-09-25-3'>PHP 8.5.0 RC 1 available for testing</a></div>
+<nav id="trick"><div><dl>
+<dt><a href='/manual/en/getting-started.php'>Getting Started</a></dt>
+	<dd><a href='/manual/en/introduction.php'>Introduction</a></dd>
+	<dd><a href='/manual/en/tutorial.php'>A simple tutorial</a></dd>
+<dt><a href='/manual/en/langref.php'>Language Reference</a></dt>
+	<dd><a href='/manual/en/language.basic-syntax.php'>Basic syntax</a></dd>
+	<dd><a href='/manual/en/language.types.php'>Types</a></dd>
+	<dd><a href='/manual/en/language.variables.php'>Variables</a></dd>
+	<dd><a href='/manual/en/language.constants.php'>Constants</a></dd>
+	<dd><a href='/manual/en/language.expressions.php'>Expressions</a></dd>
+	<dd><a href='/manual/en/language.operators.php'>Operators</a></dd>
+	<dd><a href='/manual/en/language.control-structures.php'>Control Structures</a></dd>
+	<dd><a href='/manual/en/language.functions.php'>Functions</a></dd>
+	<dd><a href='/manual/en/language.oop5.php'>Classes and Objects</a></dd>
+	<dd><a href='/manual/en/language.namespaces.php'>Namespaces</a></dd>
+	<dd><a href='/manual/en/language.enumerations.php'>Enumerations</a></dd>
+	<dd><a href='/manual/en/language.errors.php'>Errors</a></dd>
+	<dd><a href='/manual/en/language.exceptions.php'>Exceptions</a></dd>
+	<dd><a href='/manual/en/language.fibers.php'>Fibers</a></dd>
+	<dd><a href='/manual/en/language.generators.php'>Generators</a></dd>
+	<dd><a href='/manual/en/language.attributes.php'>Attributes</a></dd>
+	<dd><a href='/manual/en/language.references.php'>References Explained</a></dd>
+	<dd><a href='/manual/en/reserved.variables.php'>Predefined Variables</a></dd>
+	<dd><a href='/manual/en/reserved.exceptions.php'>Predefined Exceptions</a></dd>
+	<dd><a href='/manual/en/reserved.interfaces.php'>Predefined Interfaces and Classes</a></dd>
+	<dd><a href='/manual/en/reserved.attributes.php'>Predefined Attributes</a></dd>
+	<dd><a href='/manual/en/context.php'>Context options and parameters</a></dd>
+	<dd><a href='/manual/en/wrappers.php'>Supported Protocols and Wrappers</a></dd>
+</dl>
+<dl>
+<dt><a href='/manual/en/security.php'>Security</a></dt>
+	<dd><a href='/manual/en/security.intro.php'>Introduction</a></dd>
+	<dd><a href='/manual/en/security.general.php'>General considerations</a></dd>
+	<dd><a href='/manual/en/security.cgi-bin.php'>Installed as CGI binary</a></dd>
+	<dd><a href='/manual/en/security.apache.php'>Installed as an Apache module</a></dd>
+	<dd><a href='/manual/en/security.sessions.php'>Session Security</a></dd>
+	<dd><a href='/manual/en/security.filesystem.php'>Filesystem Security</a></dd>
+	<dd><a href='/manual/en/security.database.php'>Database Security</a></dd>
+	<dd><a href='/manual/en/security.errors.php'>Error Reporting</a></dd>
+	<dd><a href='/manual/en/security.variables.php'>User Submitted Data</a></dd>
+	<dd><a href='/manual/en/security.hiding.php'>Hiding PHP</a></dd>
+	<dd><a href='/manual/en/security.current.php'>Keeping Current</a></dd>
+<dt><a href='/manual/en/features.php'>Features</a></dt>
+	<dd><a href='/manual/en/features.http-auth.php'>HTTP authentication with PHP</a></dd>
+	<dd><a href='/manual/en/features.cookies.php'>Cookies</a></dd>
+	<dd><a href='/manual/en/features.sessions.php'>Sessions</a></dd>
+	<dd><a href='/manual/en/features.file-upload.php'>Handling file uploads</a></dd>
+	<dd><a href='/manual/en/features.remote-files.php'>Using remote files</a></dd>
+	<dd><a href='/manual/en/features.connection-handling.php'>Connection handling</a></dd>
+	<dd><a href='/manual/en/features.persistent-connections.php'>Persistent Database Connections</a></dd>
+	<dd><a href='/manual/en/features.commandline.php'>Command line usage</a></dd>
+	<dd><a href='/manual/en/features.gc.php'>Garbage Collection</a></dd>
+	<dd><a href='/manual/en/features.dtrace.php'>DTrace Dynamic Tracing</a></dd>
+</dl>
+<dl>
+<dt><a href='/manual/en/funcref.php'>Function Reference</a></dt>
+	<dd><a href='/manual/en/refs.basic.php.php'>Affecting PHP's Behaviour</a></dd>
+	<dd><a href='/manual/en/refs.utilspec.audio.php'>Audio Formats Manipulation</a></dd>
+	<dd><a href='/manual/en/refs.remote.auth.php'>Authentication Services</a></dd>
+	<dd><a href='/manual/en/refs.utilspec.cmdline.php'>Command Line Specific Extensions</a></dd>
+	<dd><a href='/manual/en/refs.compression.php'>Compression and Archive Extensions</a></dd>
+	<dd><a href='/manual/en/refs.crypto.php'>Cryptography Extensions</a></dd>
+	<dd><a href='/manual/en/refs.database.php'>Database Extensions</a></dd>
+	<dd><a href='/manual/en/refs.calendar.php'>Date and Time Related Extensions</a></dd>
+	<dd><a href='/manual/en/refs.fileprocess.file.php'>File System Related Extensions</a></dd>
+	<dd><a href='/manual/en/refs.international.php'>Human Language and Character Encoding Support</a></dd>
+	<dd><a href='/manual/en/refs.utilspec.image.php'>Image Processing and Generation</a></dd>
+	<dd><a href='/manual/en/refs.remote.mail.php'>Mail Related Extensions</a></dd>
+	<dd><a href='/manual/en/refs.math.php'>Mathematical Extensions</a></dd>
+	<dd><a href='/manual/en/refs.utilspec.nontext.php'>Non-Text MIME Output</a></dd>
+	<dd><a href='/manual/en/refs.fileprocess.process.php'>Process Control Extensions</a></dd>
+	<dd><a href='/manual/en/refs.basic.other.php'>Other Basic Extensions</a></dd>
+	<dd><a href='/manual/en/refs.remote.other.php'>Other Services</a></dd>
+	<dd><a href='/manual/en/refs.search.php'>Search Engine Extensions</a></dd>
+	<dd><a href='/manual/en/refs.utilspec.server.php'>Server Specific Extensions</a></dd>
+	<dd><a href='/manual/en/refs.basic.session.php'>Session Extensions</a></dd>
+	<dd><a href='/manual/en/refs.basic.text.php'>Text Processing</a></dd>
+	<dd><a href='/manual/en/refs.basic.vartype.php'>Variable and Type Related Extensions</a></dd>
+	<dd><a href='/manual/en/refs.webservice.php'>Web Services</a></dd>
+	<dd><a href='/manual/en/refs.utilspec.windows.php'>Windows Only Extensions</a></dd>
+	<dd><a href='/manual/en/refs.xml.php'>XML Manipulation</a></dd>
+	<dd><a href='/manual/en/refs.ui.php'>GUI Extensions</a></dd>
+</dl>
+<dl>
+<dt>Keyboard Shortcuts</dt><dt>?</dt>
+<dd>This help</dd>
+<dt>j</dt>
+<dd>Next menu item</dd>
+<dt>k</dt>
+<dd>Previous menu item</dd>
+<dt>g p</dt>
+<dd>Previous man page</dd>
+<dt>g n</dt>
+<dd>Next man page</dd>
+<dt>G</dt>
+<dd>Scroll to bottom</dd>
+<dt>g g</dt>
+<dd>Scroll to top</dd>
+<dt>g h</dt>
+<dd>Goto homepage</dd>
+<dt>g s</dt>
+<dd>Goto search<br>(current page)</dd>
+<dt>/</dt>
+<dd>Focus search box</dd>
+</dl></div></nav>
+<div id="goto">
+    <div class="search">
+         <div class="text"></div>
+         <div class="results"><ul></ul></div>
+   </div>
+</div>
+
+  <div id="breadcrumbs" class="clearfix">
+    <div id="breadcrumbs-inner">
+          <div class="next">
+        <a href="mysqli-result.fetch-row.php">
+          mysqli_result::fetch_row &raquo;
+        </a>
+      </div>
+              <div class="prev">
+        <a href="mysqli-result.fetch-fields.php">
+          &laquo; mysqli_result::fetch_fields        </a>
+      </div>
+          <ul>
+            <li><a href='index.php'>PHP Manual</a></li>      <li><a href='funcref.php'>Function Reference</a></li>      <li><a href='refs.database.php'>Database Extensions</a></li>      <li><a href='refs.database.vendors.php'>Vendor Specific Database Extensions</a></li>      <li><a href='set.mysqlinfo.php'>MySQL</a></li>      <li><a href='book.mysqli.php'>MySQLi</a></li>      <li><a href='class.mysqli-result.php'>mysqli_result</a></li>      </ul>
+    </div>
+  </div>
+
+
+
+
+<div id="layout" class="clearfix">
+  <section id="layout-content">
+  <div class="page-tools">
+    <div class="change-language">
+      <form action="/manual/change.php" method="get" id="changelang" name="changelang">
+        <fieldset>
+          <label for="changelang-langs">Change language:</label>
+          <select onchange="document.changelang.submit()" name="page" id="changelang-langs">
+            <option value='en/mysqli-result.fetch-object.php' selected="selected">English</option>
+            <option value='de/mysqli-result.fetch-object.php'>German</option>
+            <option value='es/mysqli-result.fetch-object.php'>Spanish</option>
+            <option value='fr/mysqli-result.fetch-object.php'>French</option>
+            <option value='it/mysqli-result.fetch-object.php'>Italian</option>
+            <option value='ja/mysqli-result.fetch-object.php'>Japanese</option>
+            <option value='pt_BR/mysqli-result.fetch-object.php'>Brazilian Portuguese</option>
+            <option value='ru/mysqli-result.fetch-object.php'>Russian</option>
+            <option value='tr/mysqli-result.fetch-object.php'>Turkish</option>
+            <option value='uk/mysqli-result.fetch-object.php'>Ukrainian</option>
+            <option value='zh/mysqli-result.fetch-object.php'>Chinese (Simplified)</option>
+            <option value='help-translate.php'>Other</option>
+          </select>
+        </fieldset>
+      </form>
+    </div>
+  </div><div id="mysqli-result.fetch-object" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">mysqli_result::fetch_object</h1>
+  <h1 class="refname">mysqli_fetch_object</h1>
+  <p class="verinfo">(PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">mysqli_result::fetch_object</span> -- <span class="refname">mysqli_fetch_object</span> &mdash; <span class="dc-title">Fetch the next row of a result set as an object</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-mysqli-result.fetch-object-description">
+  <h3 class="title">Description</h3>
+  <p class="para">Object-oriented style</p>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><strong>mysqli_result::fetch_object</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.string.php" class="type string">string</a></span> <code class="parameter">$class</code><span class="initializer"> = &quot;stdClass&quot;</span></span>, <span class="methodparam"><span class="type"><a href="language.types.array.php" class="type array">array</a></span> <code class="parameter">$constructor_args</code><span class="initializer"> = []</span></span>): <span class="type"><span class="type"><a href="language.types.object.php" class="type object">object</a></span>|<span class="type"><a href="language.types.null.php" class="type null">null</a></span>|<span class="type"><a href="language.types.singleton.php" class="type false">false</a></span></span></div>
+
+  <p class="para rdfs-comment">Procedural style</p>
+  <div class="methodsynopsis dc-description"><span class="methodname"><strong>mysqli_fetch_object</strong></span>(<span class="methodparam"><span class="type"><a href="class.mysqli-result.php" class="type mysqli_result">mysqli_result</a></span> <code class="parameter">$result</code></span>, <span class="methodparam"><span class="type"><a href="language.types.string.php" class="type string">string</a></span> <code class="parameter">$class</code><span class="initializer"> = &quot;stdClass&quot;</span></span>, <span class="methodparam"><span class="type"><a href="language.types.array.php" class="type array">array</a></span> <code class="parameter">$constructor_args</code><span class="initializer"> = []</span></span>): <span class="type"><span class="type"><a href="language.types.object.php" class="type object">object</a></span>|<span class="type"><a href="language.types.null.php" class="type null">null</a></span>|<span class="type"><a href="language.types.singleton.php" class="type false">false</a></span></span></div>
+
+  <p class="para rdfs-comment">
+   Fetches one row of data from the result set and returns it as an object,
+   where each property represents the name of the result set&#039;s column.
+   Each subsequent call to this function will return the next row within the
+   result set, or <strong><code><a href="reserved.constants.php#constant.null">null</a></code></strong> if there are no more rows.
+  </p>
+  <p class="para">
+   If two or more columns of the result have the same name, the last
+   column will take precedence and overwrite any previous data. To
+   access multiple columns with the same name,
+   <span class="function"><a href="mysqli-result.fetch-row.php" class="function">mysqli_fetch_row()</a></span> may be used to fetch the numerically
+   indexed array, or aliases may be used in the SQL query select list to give
+   columns different names.
+  </p>
+  <blockquote class="note"><p><strong class="note">Note</strong>: 
+   <span class="simpara">
+     This function sets the properties
+     of the object before calling the object constructor.
+   </span>
+  </p></blockquote>
+  <blockquote class="note"><p><strong class="note">Note</strong>: <span class="simpara">Field names returned by this function
+are <em>case-sensitive</em>.</span></p></blockquote>
+  <blockquote class="note"><p><strong class="note">Note</strong>: <span class="simpara">This function sets NULL fields to
+the PHP <strong><code><a href="reserved.constants.php#constant.null">null</a></code></strong> value.</span></p></blockquote>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-mysqli-result.fetch-object-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+    <dt>
+<code class="parameter">result</code></dt><dd><p class="para">Procedural style only: A <span class="classname"><a href="class.mysqli-result.php" class="classname">mysqli_result</a></span>
+object returned by <span class="function"><a href="mysqli.query.php" class="function">mysqli_query()</a></span>, <span class="function"><a href="mysqli.store-result.php" class="function">mysqli_store_result()</a></span>,
+<span class="function"><a href="mysqli.use-result.php" class="function">mysqli_use_result()</a></span> or <span class="function"><a href="mysqli-stmt.get-result.php" class="function">mysqli_stmt_get_result()</a></span>.</p></dd>
+    
+     <dt><code class="parameter">class</code></dt>
+     <dd>
+      <p class="para">
+       The name of the class to instantiate, set the properties of and return.
+       If not specified, a <span class="classname"><a href="class.stdclass.php" class="classname">stdClass</a></span> object is returned.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">constructor_args</code></dt>
+     <dd>
+      <p class="para">
+       An optional <span class="type"><a href="language.types.array.php" class="type array">array</a></span> of parameters to pass to the constructor
+       for <code class="parameter">class</code> objects.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-mysqli-result.fetch-object-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns an object representing the fetched row, where each property
+   represents the name of the result set&#039;s column, <strong><code><a href="reserved.constants.php#constant.null">null</a></code></strong> if there
+   are no more rows in the result set,  or <strong><code><a href="reserved.constants.php#constant.false">false</a></code></strong> on failure.
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-mysqli-result.fetch-object-errors">
+  <h3 class="title">Errors/Exceptions</h3>
+  <p class="para">
+   A <span class="classname"><a href="class.valueerror.php" class="classname">ValueError</a></span> is thrown when
+   the <code class="parameter">constructor_args</code> is non-empty with the class not having constructor.
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-mysqli-result.fetch-object-changelog">
+  <h3 class="title">Changelog</h3>
+  <table class="doctable informaltable">
+   
+    <thead>
+     <tr>
+      <th>Version</th>
+      <th>Description</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td>8.3.0</td>
+      <td>
+       Now throws a <span class="classname"><a href="class.valueerror.php" class="classname">ValueError</a></span> exception when
+       the <code class="parameter">constructor_args</code> is non-empty with the class not having constructor;
+       previously an <span class="classname"><a href="class.exception.php" class="classname">Exception</a></span> was thrown.
+      </td>
+     </tr>
+
+     <tr>
+      <td>8.0.0</td>
+      <td>
+       <code class="parameter">constructor_args</code> now accepts <code class="literal">[]</code> for constructors with 0 parameters;
+       previously an exception was thrown.
+      </td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-mysqli-result.fetch-object-examples">
+  <h3 class="title">Examples</h3>
+  <div class="example" id="example-1668">
+   <p><strong>Example #1 <span class="methodname"><strong>mysqli_result::fetch_object()</strong></span> example</strong></p>
+   <div class="example-contents"><p>Object-oriented style</p></div>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /><br />mysqli_report</span><span style="color: #007700">(</span><span style="color: #0000BB">MYSQLI_REPORT_ERROR </span><span style="color: #007700">| </span><span style="color: #0000BB">MYSQLI_REPORT_STRICT</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$mysqli </span><span style="color: #007700">= new </span><span style="color: #0000BB">mysqli</span><span style="color: #007700">(</span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">, </span><span style="color: #DD0000">"my_user"</span><span style="color: #007700">, </span><span style="color: #DD0000">"my_password"</span><span style="color: #007700">, </span><span style="color: #DD0000">"world"</span><span style="color: #007700">);<br /> <br /></span><span style="color: #0000BB">$query </span><span style="color: #007700">= </span><span style="color: #DD0000">"SELECT Name, CountryCode FROM City ORDER BY ID DESC"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$result </span><span style="color: #007700">= </span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #0000BB">$query</span><span style="color: #007700">);<br /><br />while (</span><span style="color: #0000BB">$obj </span><span style="color: #007700">= </span><span style="color: #0000BB">$result</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">fetch_object</span><span style="color: #007700">()) {<br />    </span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"%s (%s)\n"</span><span style="color: #007700">, </span><span style="color: #0000BB">$obj</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">Name</span><span style="color: #007700">, </span><span style="color: #0000BB">$obj</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">CountryCode</span><span style="color: #007700">);<br />}</span></span></code></div>
+   </div>
+
+   <div class="example-contents"><p>Procedural style</p></div>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /><br />mysqli_report</span><span style="color: #007700">(</span><span style="color: #0000BB">MYSQLI_REPORT_ERROR </span><span style="color: #007700">| </span><span style="color: #0000BB">MYSQLI_REPORT_STRICT</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$link </span><span style="color: #007700">= </span><span style="color: #0000BB">mysqli_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">, </span><span style="color: #DD0000">"my_user"</span><span style="color: #007700">, </span><span style="color: #DD0000">"my_password"</span><span style="color: #007700">, </span><span style="color: #DD0000">"world"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$query </span><span style="color: #007700">= </span><span style="color: #DD0000">"SELECT Name, CountryCode FROM City ORDER BY ID DESC"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$result </span><span style="color: #007700">= </span><span style="color: #0000BB">mysqli_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$link</span><span style="color: #007700">, </span><span style="color: #0000BB">$query</span><span style="color: #007700">);<br /><br />while (</span><span style="color: #0000BB">$obj </span><span style="color: #007700">= </span><span style="color: #0000BB">mysqli_fetch_object</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">)) {<br />    </span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"%s (%s)\n"</span><span style="color: #007700">, </span><span style="color: #0000BB">$obj</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">Name</span><span style="color: #007700">, </span><span style="color: #0000BB">$obj</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">CountryCode</span><span style="color: #007700">);<br />}</span></span></code></div>
+   </div>
+
+   <div class="example-contents"><p>The above examples will output
+something similar to:</p></div>
+   <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">Pueblo (USA)
+Arvada (USA)
+Cape Coral (USA)
+Green Bay (USA)
+Santa Clara (USA)</pre>
+</div>
+   </div>
+  </div>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-mysqli-result.fetch-object-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="mysqli-result.fetch-array.php" class="function" rel="rdfs-seeAlso">mysqli_fetch_array()</a> - Fetch the next row of a result set as an associative, a numeric array, or both</span></li>
+    <li><span class="function"><a href="mysqli-result.fetch-assoc.php" class="function" rel="rdfs-seeAlso">mysqli_fetch_assoc()</a> - Fetch the next row of a result set as an associative array</span></li>
+    <li><span class="function"><a href="mysqli-result.fetch-column.php" class="function" rel="rdfs-seeAlso">mysqli_fetch_column()</a> - Fetch a single column from the next row of a result set</span></li>
+    <li><span class="function"><a href="mysqli-result.fetch-row.php" class="function" rel="rdfs-seeAlso">mysqli_fetch_row()</a> - Fetch the next row of a result set as an enumerated array</span></li>
+    <li><span class="function"><a href="mysqli.query.php" class="function" rel="rdfs-seeAlso">mysqli_query()</a> - Performs a query on the database</span></li>
+    <li><span class="function"><a href="mysqli-result.data-seek.php" class="function" rel="rdfs-seeAlso">mysqli_data_seek()</a> - Adjusts the result pointer to an arbitrary row in the result</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>    <div class="contribute">
+      <h3 class="title">Found A Problem?</h3>
+      <div>
+         
+      </div>
+      <div class="edit-bug">
+        <a href="https://github.com/php/doc-base/blob/master/README.md" title="This will take you to our contribution guidelines on GitHub" target="_blank" rel="noopener noreferrer">Learn How To Improve This Page</a>
+        •
+        <a href="https://github.com/php/doc-en/blob/master/reference/mysqli/mysqli_result/fetch-object.xml">Submit a Pull Request</a>
+        •
+        <a href="https://github.com/php/doc-en/issues/new?body=From%20manual%20page:%20https:%2F%2Fphp.net%2Fmysqli-result.fetch-object%0A%0A---">Report a Bug</a>
+      </div>
+    </div><section id="usernotes">
+ <div class="head">
+  <span class="action"><a href="/manual/add-note.php?sect=mysqli-result.fetch-object&amp;repo=en&amp;redirect=https://www.php.net/manual/en/mysqli-result.fetch-object.php">＋<small>add a note</small></a></span>
+  <h3 class="title">User Contributed Notes <span class="count">5 notes</span></h3>
+ </div><div id="allnotes">
+  <div class="note" id="109186">  <div class="votes">
+    <div id="Vu109186">
+    <a href="/manual/vote-note.php?id=109186&amp;page=mysqli-result.fetch-object&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd109186">
+    <a href="/manual/vote-note.php?id=109186&amp;page=mysqli-result.fetch-object&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V109186" title="74% like this...">
+    25
+    </div>
+  </div>
+  <a href="#109186" class="name">
+  <strong class="user"><em>Driek</em></strong></a><a class="genanchor" href="#109186"> &para;</a><div class="date" title="2012-06-26 05:18"><strong>13 years ago</strong></div>
+  <div class="text" id="Hcom109186">
+<div class="phpcode"><code><span class="html">As indicated in the user comments of the mysql_fetch_object, it is important to realize that class fields get values assigned to them BEFORE the constructor is called.<br />For example;<br /><span class="default">&lt;?php<br /><br /></span><span class="keyword">class </span><span class="default">Employee<br /></span><span class="keyword">{<br />  private </span><span class="default">$id</span><span class="keyword">;<br /><br />  public function </span><span class="default">__construct</span><span class="keyword">(</span><span class="default">$id </span><span class="keyword">= </span><span class="default">0</span><span class="keyword">)<br />  {<br />    </span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">id </span><span class="keyword">= </span><span class="default">$id</span><span class="keyword">;<br />  }<br />}<br /><br /></span><span class="comment">// some code for creating a database connection... i.e. mysqli object<br /></span><span class="keyword">....<br /></span><span class="default">$result </span><span class="keyword">= </span><span class="default">$con</span><span class="keyword">-&gt;</span><span class="default">query</span><span class="keyword">(</span><span class="string">"select id, name from employees"</span><span class="keyword">);<br /></span><span class="default">$anEmployee </span><span class="keyword">= </span><span class="default">$result</span><span class="keyword">-&gt;</span><span class="default">fetch_object</span><span class="keyword">(</span><span class="string">"Employee"</span><span class="keyword">);<br /></span><span class="default">?&gt;<br /></span>will result in the ID being 0 because it is overridden by the constructor. Therefore, it is useful to check if the class field is already set.<br />I.e.<br /><span class="default">&lt;?php<br /></span><span class="keyword">class </span><span class="default">Employee<br /></span><span class="keyword">{<br />  private </span><span class="default">$id</span><span class="keyword">;<br /><br />  public function </span><span class="default">__construct</span><span class="keyword">(</span><span class="default">$id </span><span class="keyword">= </span><span class="default">0</span><span class="keyword">)<br />  {<br />    if (!</span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">id</span><span class="keyword">)<br />    {<br />       </span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">id </span><span class="keyword">= </span><span class="default">$id <br />    </span><span class="keyword">}<br />  }<br />}<br /></span><span class="default">?&gt;<br /></span>Also note that the fields which will be assigned by fetch_object are case sensitive. If your table has the field "ID", it will result in the class field $ID being set. A simple work-around is to use aliases. I.e. "SELECT *, ID as id FROM myTable"<br />I hope this helps some people.</span></code></div>
+  </div>
+ </div>
+  <div class="note" id="119298">  <div class="votes">
+    <div id="Vu119298">
+    <a href="/manual/vote-note.php?id=119298&amp;page=mysqli-result.fetch-object&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd119298">
+    <a href="/manual/vote-note.php?id=119298&amp;page=mysqli-result.fetch-object&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V119298" title="78% like this...">
+    16
+    </div>
+  </div>
+  <a href="#119298" class="name">
+  <strong class="user"><em>neo22s at gmail dot com</em></strong></a><a class="genanchor" href="#119298"> &para;</a><div class="date" title="2016-05-08 08:04"><strong>9 years ago</strong></div>
+  <div class="text" id="Hcom119298">
+<div class="phpcode"><code><span class="html">Since 5.6.21 and PHP 7.0.6<br /><br />mysqli_fetch_object() sets the properties of the object AFTER calling the object constructor. Not BEFORE as was in previous versions.<br /><br />So behaviour has changed. Seems a bug but not sure if was done intentionally.<br /><br /><a href="https://bugs.php.net/bug.php?id=72151" rel="nofollow" target="_blank">https://bugs.php.net/bug.php?id=72151</a></span></code></div>
+  </div>
+ </div>
+  <div class="note" id="118852">  <div class="votes">
+    <div id="Vu118852">
+    <a href="/manual/vote-note.php?id=118852&amp;page=mysqli-result.fetch-object&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd118852">
+    <a href="/manual/vote-note.php?id=118852&amp;page=mysqli-result.fetch-object&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V118852" title="75% like this...">
+    15
+    </div>
+  </div>
+  <a href="#118852" class="name">
+  <strong class="user"><em>object-array at gmail dot com</em></strong></a><a class="genanchor" href="#118852"> &para;</a><div class="date" title="2016-02-17 08:56"><strong>9 years ago</strong></div>
+  <div class="text" id="Hcom118852">
+<div class="phpcode"><code><span class="html">Please mind the difference between objects and arrays in PHP&gt;=5: arrays are by value while objects are by reference.<br /><br />&lt;?<br />$o = mysqli_fetch_object($res);<br />$o1 = $o;<br />$o1-&gt;value = 10;<br /><br />$a = mysqli_fetch_array($res);<br />$a1 = $a;<br />$a1['value'] = 10;<br /><br />echo $o-&gt;value; // 10<br />echo $a['value']; // (original value from db)<br />?&gt;<br /><br />Should same behaviour be intended, the object needs to be cloned:<br /><br />&lt;?<br />$o1 = clone $o;<br />?&gt;<br /><br />More about object cloning:<br /><a href="http://php.net/manual/en/language.oop5.cloning.php" rel="nofollow" target="_blank">http://php.net/manual/en/language.oop5.cloning.php</a></span></code></div>
+  </div>
+ </div>
+  <div class="note" id="119531">  <div class="votes">
+    <div id="Vu119531">
+    <a href="/manual/vote-note.php?id=119531&amp;page=mysqli-result.fetch-object&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd119531">
+    <a href="/manual/vote-note.php?id=119531&amp;page=mysqli-result.fetch-object&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V119531" title="71% like this...">
+    6
+    </div>
+  </div>
+  <a href="#119531" class="name">
+  <strong class="user"><em>macole at paypal dot com</em></strong></a><a class="genanchor" href="#119531"> &para;</a><div class="date" title="2016-06-30 02:56"><strong>9 years ago</strong></div>
+  <div class="text" id="Hcom119531">
+<div class="phpcode"><code><span class="html">Note that if you supply a class that has a __set() magic method defined in it, that method will be called for any properties that are not defined in your class.  For example:<br /><br /><span class="default">&lt;?php<br /><br /></span><span class="keyword">class </span><span class="default">SomeClass </span><span class="keyword">{<br />    private </span><span class="default">$id</span><span class="keyword">;<br />    public </span><span class="default">$partner_name</span><span class="keyword">;<br />    public function </span><span class="default">__set</span><span class="keyword">( </span><span class="default">$name</span><span class="keyword">, </span><span class="default">$value </span><span class="keyword">) {<br />        echo </span><span class="string">"__set was called!  Name = </span><span class="default">$name</span><span class="string">\n"</span><span class="keyword">;<br />        </span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">$name </span><span class="keyword">= </span><span class="default">$value</span><span class="keyword">;<br />    }<br />}<br /><br /></span><span class="default">$db </span><span class="keyword">= new </span><span class="default">mysqli</span><span class="keyword">( </span><span class="string">'localhost'</span><span class="keyword">, </span><span class="string">'Username'</span><span class="keyword">, </span><span class="string">'Password'</span><span class="keyword">, </span><span class="string">'DbName' </span><span class="keyword">);<br /></span><span class="default">$result </span><span class="keyword">= </span><span class="default">$db</span><span class="keyword">-&gt;</span><span class="default">query</span><span class="keyword">( </span><span class="string">'SELECT id, partner_name, partner_type FROM submissions' </span><span class="keyword">);<br /></span><span class="default">$object </span><span class="keyword">= </span><span class="default">$result</span><span class="keyword">-&gt;</span><span class="default">fetch_object</span><span class="keyword">( </span><span class="string">'SomeClass' </span><span class="keyword">);<br /><br /></span><span class="default">?&gt;<br /></span><br />Produces the following output:<br /><br />__set was called!  Name = partner_type</span></code></div>
+  </div>
+ </div>
+  <div class="note" id="92784">  <div class="votes">
+    <div id="Vu92784">
+    <a href="/manual/vote-note.php?id=92784&amp;page=mysqli-result.fetch-object&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd92784">
+    <a href="/manual/vote-note.php?id=92784&amp;page=mysqli-result.fetch-object&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V92784" title="64% like this...">
+    9
+    </div>
+  </div>
+  <a href="#92784" class="name">
+  <strong class="user"><em>benpptung at tacol dot biz</em></strong></a><a class="genanchor" href="#92784"> &para;</a><div class="date" title="2009-08-08 08:04"><strong>16 years ago</strong></div>
+  <div class="text" id="Hcom92784">
+<div class="phpcode"><code><span class="html">I don't know why no one talk about this.
+<br />fetch_object is very powerful since you can instantiate an Object which has the methods you wanna have.
+<br />
+<br />You can try like this..
+<br />
+<br /><span class="default">&lt;?php
+<br /></span><span class="keyword">class </span><span class="default">PowerfulVO </span><span class="keyword">extends </span><span class="default">AbstractWhatEver </span><span class="keyword">{
+<br />
+<br />    public </span><span class="default">$field1</span><span class="keyword">;
+<br />    private </span><span class="default">$field2</span><span class="keyword">; </span><span class="comment">// note : private is ok
+<br />
+<br />    </span><span class="keyword">public function </span><span class="default">method</span><span class="keyword">(){
+<br />       </span><span class="comment">// method in this class
+<br />    </span><span class="keyword">}
+<br />}
+<br />
+<br />     </span><span class="default">$sql </span><span class="keyword">= </span><span class="string">"SELECT * FROM table ..."
+<br />     </span><span class="default">$mysqli </span><span class="keyword">= new </span><span class="default">mysqli</span><span class="keyword">(........);
+<br />     </span><span class="default">$result </span><span class="keyword">= </span><span class="default">$mysqli</span><span class="keyword">-&gt;</span><span class="default">query</span><span class="keyword">(</span><span class="default">$sql</span><span class="keyword">);
+<br />     </span><span class="default">$vo </span><span class="keyword">= </span><span class="default">$result</span><span class="keyword">-&gt;</span><span class="default">fetch_object</span><span class="keyword">(</span><span class="string">'PowerfulVO'</span><span class="keyword">);
+<br /></span><span class="default">?&gt;
+<br /></span>
+<br />Note : if the field is not defined in the class, fetch_object will add this field for you as public.
+<br />
+<br />The method is very powerful, especially if you want to use a VO design pattern or class mapping feature with Flex Remoting Object( Of course, you need to have ZendAMF or AMFPHP ..framework)
+<br />
+<br />Hope this help and open new possibilities for you</span></code></div>
+  </div>
+ </div></div>
+<div class="foot"><a href="/manual/add-note.php?sect=mysqli-result.fetch-object&amp;repo=en&amp;redirect=https://www.php.net/manual/en/mysqli-result.fetch-object.php">＋<small>add a note</small></a></div>
+</section>    </section><!-- layout-content -->
+        <aside class='layout-menu'>
+
+        <ul class='parent-menu-list'>
+                                    <li>
+                <a href="class.mysqli-result.php">mysqli_result</a>
+
+                                    <ul class='child-menu-list'>
+
+                                                <li class="">
+                            <a href="mysqli-result.construct.php" title="_&#8203;_&#8203;construct">_&#8203;_&#8203;construct</a>
+                        </li>
+                                                <li class="">
+                            <a href="mysqli-result.current-field.php" title="$current_&#8203;field">$current_&#8203;field</a>
+                        </li>
+                                                <li class="">
+                            <a href="mysqli-result.data-seek.php" title="data_&#8203;seek">data_&#8203;seek</a>
+                        </li>
+                                                <li class="">
+                            <a href="mysqli-result.fetch-all.php" title="fetch_&#8203;all">fetch_&#8203;all</a>
+                        </li>
+                                                <li class="">
+                            <a href="mysqli-result.fetch-array.php" title="fetch_&#8203;array">fetch_&#8203;array</a>
+                        </li>
+                                                <li class="">
+                            <a href="mysqli-result.fetch-assoc.php" title="fetch_&#8203;assoc">fetch_&#8203;assoc</a>
+                        </li>
+                                                <li class="">
+                            <a href="mysqli-result.fetch-column.php" title="fetch_&#8203;column">fetch_&#8203;column</a>
+                        </li>
+                                                <li class="">
+                            <a href="mysqli-result.fetch-field.php" title="fetch_&#8203;field">fetch_&#8203;field</a>
+                        </li>
+                                                <li class="">
+                            <a href="mysqli-result.fetch-field-direct.php" title="fetch_&#8203;field_&#8203;direct">fetch_&#8203;field_&#8203;direct</a>
+                        </li>
+                                                <li class="">
+                            <a href="mysqli-result.fetch-fields.php" title="fetch_&#8203;fields">fetch_&#8203;fields</a>
+                        </li>
+                                                <li class="current">
+                            <a href="mysqli-result.fetch-object.php" title="fetch_&#8203;object">fetch_&#8203;object</a>
+                        </li>
+                                                <li class="">
+                            <a href="mysqli-result.fetch-row.php" title="fetch_&#8203;row">fetch_&#8203;row</a>
+                        </li>
+                                                <li class="">
+                            <a href="mysqli-result.field-count.php" title="$field_&#8203;count">$field_&#8203;count</a>
+                        </li>
+                                                <li class="">
+                            <a href="mysqli-result.field-seek.php" title="field_&#8203;seek">field_&#8203;seek</a>
+                        </li>
+                                                <li class="">
+                            <a href="mysqli-result.free.php" title="free">free</a>
+                        </li>
+                                                <li class="">
+                            <a href="mysqli-result.getiterator.php" title="getIterator">getIterator</a>
+                        </li>
+                                                <li class="">
+                            <a href="mysqli-result.lengths.php" title="$lengths">$lengths</a>
+                        </li>
+                                                <li class="">
+                            <a href="mysqli-result.num-rows.php" title="$num_&#8203;rows">$num_&#8203;rows</a>
+                        </li>
+                        
+                    </ul>
+                
+            </li>
+                        
+                    </ul>
+    </aside>
+
+
+  </div><!-- layout -->
+
+  <footer>
+    <div class="container footer-content">
+      <div class="row-fluid">
+      <ul class="footmenu">
+        <li><a href="/manual/en/copyright.php">Copyright &copy; 2001-2025 The PHP Documentation Group</a></li>
+        <li><a href="/my.php">My PHP.net</a></li>
+        <li><a href="/contact.php">Contact</a></li>
+        <li><a href="/sites.php">Other PHP.net sites</a></li>
+        <li><a href="/privacy.php">Privacy policy</a></li>
+      </ul>
+      </div>
+    </div>
+  </footer>
+
+    
+<script src="/manual/en/js/ext/jquery-3.6.0.min.js"></script>
+<script src="/manual/en/js/ext/FuzzySearch.min.js"></script>
+<script src="/manual/en/js/ext/mousetrap.min.js"></script>
+<script src="/manual/en/js/ext/jquery.scrollTo.min.js"></script>
+<script src="/manual/en/js/search.js"></script>
+<script src="/manual/en/js/common.js"></script>
+<script type="module" src="/manual/en/js/interactive-examples.js"></script>
+
+<a id="toTop" href="javascript:;"><span id="toTopHover"></span><img width="40" height="40" alt="To Top" src="/images/to-top@2x.png"></a>
+
+<div id="search-modal__backdrop" class="search-modal__backdrop">
+  <div
+    role="dialog"
+    aria-label="Search modal"
+    id="search-modal"
+    class="search-modal"
+  >
+    <div class="search-modal__header">
+      <div class="search-modal__form">
+        <div class="search-modal__input-icon">
+          <!-- https://feathericons.com search -->
+          <svg xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+            width="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </div>
+        <input
+          type="search"
+          id="search-modal__input"
+          class="search-modal__input"
+          placeholder="Search docs"
+          aria-label="Search docs"
+        />
+      </div>
+
+      <button aria-label="Close" class="search-modal__close">
+        <!-- https://pictogrammers.com/library/mdi/icon/close/ -->
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+          width="24"
+          viewBox="0 0 24 24"
+        >
+          <path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"/>
+        </svg>
+      </button>
+    </div>
+    <div
+      role="listbox"
+      aria-label="Search results"
+      id="search-modal__results"
+      class="search-modal__results"
+    ></div>
+    <div class="search-modal__helper-text">
+      <div>
+        <kbd>↑</kbd> and <kbd>↓</kbd> to navigate •
+        <kbd>Enter</kbd> to select •
+        <kbd>Esc</kbd> to close
+      </div>
+      <div>
+        Press <kbd>Enter</kbd> without
+        selection to search using Google
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

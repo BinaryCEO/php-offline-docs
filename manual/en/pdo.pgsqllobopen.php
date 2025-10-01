@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+     
+  
+  <title>PHP: PDO::pgsqlLOBOpen - Manual</title>
+
+      <link rel="stylesheet" type="text/css" href="/manual/en/fonts/Fira/fira.css" media="screen">
+      <link rel="stylesheet" type="text/css" href="/manual/en/fonts/Font-Awesome/css/fontello.css" media="screen">
+      <link rel="stylesheet" type="text/css" href="/manual/en/styles/theme-base.css" media="screen">
+      <link rel="stylesheet" type="text/css" href="/manual/en/styles/theme-medium.css" media="screen">
+  
+ <link rel="icon" type="image/svg+xml" sizes="any" href="https://www.php.net/favicon.svg?v=2">
+ <link rel="icon" type="image/png" sizes="196x196" href="https://www.php.net/favicon-196x196.png?v=2">
+ <link rel="icon" type="image/png" sizes="32x32" href="https://www.php.net/favicon-32x32.png?v=2">
+ <link rel="icon" type="image/png" sizes="16x16" href="https://www.php.net/favicon-16x16.png?v=2">
+ <link rel="shortcut icon" href="https://www.php.net/favicon.ico?v=2">
+
+ <link rel="search" type="application/opensearchdescription+xml" href="https://www.php.net/phpnetimprovedsearch.src" title="Add PHP.net search">
+ <link rel="alternate" type="application/atom+xml" href="https://www.php.net/releases/feed.php" title="PHP Release feed">
+ <link rel="alternate" type="application/atom+xml" href="https://www.php.net/feed.atom" title="PHP: Hypertext Preprocessor">
+
+ <link rel="canonical" href="https://www.php.net/manual/en/pdo.pgsqllobopen.php">
+ <link rel="shorturl" href="https://www.php.net/manual/en/pdo.pgsqllobopen.php">
+ <link rel="alternate" href="https://www.php.net/manual/en/pdo.pgsqllobopen.php" hreflang="x-default">
+
+ <link rel="contents" href="https://www.php.net/manual/en/index.php">
+ <link rel="index" href="https://www.php.net/manual/en/ref.pdo-pgsql.php">
+ <link rel="prev" href="https://www.php.net/manual/en/pdo.pgsqllobcreate.php">
+ <link rel="next" href="https://www.php.net/manual/en/pdo.pgsqllobunlink.php">
+
+ <link rel="alternate" href="https://www.php.net/manual/en/pdo.pgsqllobopen.php" hreflang="en">
+ <link rel="alternate" href="https://www.php.net/manual/de/pdo.pgsqllobopen.php" hreflang="de">
+ <link rel="alternate" href="https://www.php.net/manual/es/pdo.pgsqllobopen.php" hreflang="es">
+ <link rel="alternate" href="https://www.php.net/manual/fr/pdo.pgsqllobopen.php" hreflang="fr">
+ <link rel="alternate" href="https://www.php.net/manual/it/pdo.pgsqllobopen.php" hreflang="it">
+ <link rel="alternate" href="https://www.php.net/manual/ja/pdo.pgsqllobopen.php" hreflang="ja">
+ <link rel="alternate" href="https://www.php.net/manual/pt_BR/pdo.pgsqllobopen.php" hreflang="pt_BR">
+ <link rel="alternate" href="https://www.php.net/manual/ru/pdo.pgsqllobopen.php" hreflang="ru">
+ <link rel="alternate" href="https://www.php.net/manual/tr/pdo.pgsqllobopen.php" hreflang="tr">
+ <link rel="alternate" href="https://www.php.net/manual/uk/pdo.pgsqllobopen.php" hreflang="uk">
+ <link rel="alternate" href="https://www.php.net/manual/zh/pdo.pgsqllobopen.php" hreflang="zh">
+
+<link rel="stylesheet" type="text/css" href="/manual/en/fonts/Fira/fira.css" media="screen">
+<link rel="stylesheet" type="text/css" href="/manual/en/fonts/Font-Awesome/css/fontello.css" media="screen">
+<link rel="stylesheet" type="text/css" href="/manual/en/styles/theme-base.css" media="screen">
+<link rel="stylesheet" type="text/css" href="/manual/en/styles/theme-medium.css" media="screen">
+
+
+ 
+
+<meta name="Description" content="Alias of Pdo\Pgsql::lobOpen" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@official_php" />
+<meta name="twitter:title" content="PHP: PDO::pgsqlLOBOpen - Manual" />
+<meta name="twitter:description" content="Alias of Pdo\Pgsql::lobOpen" />
+<meta name="twitter:creator" content="@official_php" />
+<meta name="twitter:image:src" content="https://www.php.net/images/meta-image.png" />
+
+<meta itemprop="name" content="PHP: PDO::pgsqlLOBOpen - Manual" />
+<meta itemprop="description" content="Alias of Pdo\Pgsql::lobOpen" />
+<meta itemprop="image" content="https://www.php.net/images/meta-image.png" />
+
+<meta property="og:image" content="https://www.php.net/images/meta-image.png" />
+<meta property="og:description" content="Alias of Pdo\Pgsql::lobOpen" />
+
+<link href="https://fosstodon.org/@php" rel="me" />
+<!-- Matomo -->
+<script>
+    var _paq = window._paq = window._paq || [];
+    /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+    _paq.push(["setDoNotTrack", true]);
+    _paq.push(["disableCookies"]);
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+        var u="https://analytics.php.net/";
+        _paq.push(['setTrackerUrl', u+'matomo.php']);
+        _paq.push(['setSiteId', '1']);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+    })();
+</script>
+<!-- End Matomo Code -->
+</head>
+<body class="docs ">
+
+<nav class="navbar navbar-fixed-top">
+  <div class="navbar__inner">
+    <a href="/" aria-label="PHP Home" class="navbar__brand">
+      <img
+        src="/images/logos/php-logo-white.svg"
+        aria-hidden="true"
+        width="80"
+        height="40"
+      >
+    </a>
+
+    <div
+      id="navbar__offcanvas"
+      tabindex="-1"
+      class="navbar__offcanvas"
+      aria-label="Menu"
+    >
+      <button
+        id="navbar__close-button"
+        class="navbar__icon-item navbar_icon-item--visually-aligned navbar__close-button"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg>
+      </button>
+
+      <ul class="navbar__nav">
+                            <li class="navbar__item">
+              <a
+                href="/downloads.php"
+                                class="navbar__link  "
+              >
+                                  Downloads                              </a>
+          </li>
+                            <li class="navbar__item">
+              <a
+                href="/docs.php"
+                aria-current="page"                class="navbar__link navbar__link--active "
+              >
+                                  Documentation                              </a>
+          </li>
+                            <li class="navbar__item">
+              <a
+                href="/get-involved.php"
+                                class="navbar__link  "
+              >
+                                  Get Involved                              </a>
+          </li>
+                            <li class="navbar__item">
+              <a
+                href="/support.php"
+                                class="navbar__link  "
+              >
+                                  Help                              </a>
+          </li>
+                            <li class="navbar__item">
+              <a
+                href="/releases/8.4/index.php"
+                                class="navbar__link  navbar__release"
+              >
+                                  <img src="/images/php8/logo_php8_4.svg" alt="PHP 8.4">
+                              </a>
+          </li>
+              </ul>
+    </div>
+
+    <div class="navbar__right">
+      
+      <!-- Desktop default search -->
+      <form
+        action="/manual-lookup.php"
+        class="navbar__search-form"
+      >
+        <label for="navbar__search-input" aria-label="Search docs">
+          <svg
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+  width="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="11" cy="11" r="8"></circle>
+  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+</svg>        </label>
+        <input
+          type="search"
+          name="pattern"
+          id="navbar__search-input"
+          class="navbar__search-input"
+          placeholder="Search docs"
+          accesskey="s"
+        >
+        <input type="hidden" name="scope" value="quickref">
+      </form>
+
+      <!-- Desktop encanced search -->
+      <button
+        id="navbar__search-button"
+        class="navbar__search-button"
+        hidden
+      >
+        <svg
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+  width="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="11" cy="11" r="8"></circle>
+  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+</svg>        Search docs
+      </button>
+
+      <!-- Mobile default items -->
+      <a
+        id="navbar__search-link"
+        href="/lookup-form.php"
+        aria-label="Search docs"
+        class="navbar__icon-item navbar__search-link"
+      >
+        <svg
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+  width="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="11" cy="11" r="8"></circle>
+  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+</svg>      </a>
+      <a
+        id="navbar__menu-link"
+        href="/menu.php"
+        aria-label="Menu"
+        class="navbar__icon-item navbar_icon-item--visually-aligned navbar_menu-link"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+  width="24"
+  viewBox="0 0 24 24"
+  fill="currentColor"
+>
+  <path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" />
+</svg>      </a>
+
+      <!-- Mobile enhanced items -->
+      <button
+        id="navbar__search-button-mobile"
+        aria-label="Search docs"
+        class="navbar__icon-item navbar__search-button-mobile"
+        hidden
+      >
+        <svg
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+  width="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="11" cy="11" r="8"></circle>
+  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+</svg>      </button>
+      <button
+        id="navbar__menu-button"
+        aria-label="Menu"
+        class="navbar__icon-item navbar_icon-item--visually-aligned"
+        hidden
+      >
+        <svg xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+  width="24"
+  viewBox="0 0 24 24"
+  fill="currentColor"
+>
+  <path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" />
+</svg>      </button>
+    </div>
+
+    <div
+      id="navbar__backdrop"
+      class="navbar__backdrop"
+    ></div>
+  </div>
+
+  <div id="flash-message"></div>
+</nav>
+<div class="headsup"><a href='/index.php#2025-09-25-3'>PHP 8.5.0 RC 1 available for testing</a></div>
+<nav id="trick"><div><dl>
+<dt><a href='/manual/en/getting-started.php'>Getting Started</a></dt>
+	<dd><a href='/manual/en/introduction.php'>Introduction</a></dd>
+	<dd><a href='/manual/en/tutorial.php'>A simple tutorial</a></dd>
+<dt><a href='/manual/en/langref.php'>Language Reference</a></dt>
+	<dd><a href='/manual/en/language.basic-syntax.php'>Basic syntax</a></dd>
+	<dd><a href='/manual/en/language.types.php'>Types</a></dd>
+	<dd><a href='/manual/en/language.variables.php'>Variables</a></dd>
+	<dd><a href='/manual/en/language.constants.php'>Constants</a></dd>
+	<dd><a href='/manual/en/language.expressions.php'>Expressions</a></dd>
+	<dd><a href='/manual/en/language.operators.php'>Operators</a></dd>
+	<dd><a href='/manual/en/language.control-structures.php'>Control Structures</a></dd>
+	<dd><a href='/manual/en/language.functions.php'>Functions</a></dd>
+	<dd><a href='/manual/en/language.oop5.php'>Classes and Objects</a></dd>
+	<dd><a href='/manual/en/language.namespaces.php'>Namespaces</a></dd>
+	<dd><a href='/manual/en/language.enumerations.php'>Enumerations</a></dd>
+	<dd><a href='/manual/en/language.errors.php'>Errors</a></dd>
+	<dd><a href='/manual/en/language.exceptions.php'>Exceptions</a></dd>
+	<dd><a href='/manual/en/language.fibers.php'>Fibers</a></dd>
+	<dd><a href='/manual/en/language.generators.php'>Generators</a></dd>
+	<dd><a href='/manual/en/language.attributes.php'>Attributes</a></dd>
+	<dd><a href='/manual/en/language.references.php'>References Explained</a></dd>
+	<dd><a href='/manual/en/reserved.variables.php'>Predefined Variables</a></dd>
+	<dd><a href='/manual/en/reserved.exceptions.php'>Predefined Exceptions</a></dd>
+	<dd><a href='/manual/en/reserved.interfaces.php'>Predefined Interfaces and Classes</a></dd>
+	<dd><a href='/manual/en/reserved.attributes.php'>Predefined Attributes</a></dd>
+	<dd><a href='/manual/en/context.php'>Context options and parameters</a></dd>
+	<dd><a href='/manual/en/wrappers.php'>Supported Protocols and Wrappers</a></dd>
+</dl>
+<dl>
+<dt><a href='/manual/en/security.php'>Security</a></dt>
+	<dd><a href='/manual/en/security.intro.php'>Introduction</a></dd>
+	<dd><a href='/manual/en/security.general.php'>General considerations</a></dd>
+	<dd><a href='/manual/en/security.cgi-bin.php'>Installed as CGI binary</a></dd>
+	<dd><a href='/manual/en/security.apache.php'>Installed as an Apache module</a></dd>
+	<dd><a href='/manual/en/security.sessions.php'>Session Security</a></dd>
+	<dd><a href='/manual/en/security.filesystem.php'>Filesystem Security</a></dd>
+	<dd><a href='/manual/en/security.database.php'>Database Security</a></dd>
+	<dd><a href='/manual/en/security.errors.php'>Error Reporting</a></dd>
+	<dd><a href='/manual/en/security.variables.php'>User Submitted Data</a></dd>
+	<dd><a href='/manual/en/security.hiding.php'>Hiding PHP</a></dd>
+	<dd><a href='/manual/en/security.current.php'>Keeping Current</a></dd>
+<dt><a href='/manual/en/features.php'>Features</a></dt>
+	<dd><a href='/manual/en/features.http-auth.php'>HTTP authentication with PHP</a></dd>
+	<dd><a href='/manual/en/features.cookies.php'>Cookies</a></dd>
+	<dd><a href='/manual/en/features.sessions.php'>Sessions</a></dd>
+	<dd><a href='/manual/en/features.file-upload.php'>Handling file uploads</a></dd>
+	<dd><a href='/manual/en/features.remote-files.php'>Using remote files</a></dd>
+	<dd><a href='/manual/en/features.connection-handling.php'>Connection handling</a></dd>
+	<dd><a href='/manual/en/features.persistent-connections.php'>Persistent Database Connections</a></dd>
+	<dd><a href='/manual/en/features.commandline.php'>Command line usage</a></dd>
+	<dd><a href='/manual/en/features.gc.php'>Garbage Collection</a></dd>
+	<dd><a href='/manual/en/features.dtrace.php'>DTrace Dynamic Tracing</a></dd>
+</dl>
+<dl>
+<dt><a href='/manual/en/funcref.php'>Function Reference</a></dt>
+	<dd><a href='/manual/en/refs.basic.php.php'>Affecting PHP's Behaviour</a></dd>
+	<dd><a href='/manual/en/refs.utilspec.audio.php'>Audio Formats Manipulation</a></dd>
+	<dd><a href='/manual/en/refs.remote.auth.php'>Authentication Services</a></dd>
+	<dd><a href='/manual/en/refs.utilspec.cmdline.php'>Command Line Specific Extensions</a></dd>
+	<dd><a href='/manual/en/refs.compression.php'>Compression and Archive Extensions</a></dd>
+	<dd><a href='/manual/en/refs.crypto.php'>Cryptography Extensions</a></dd>
+	<dd><a href='/manual/en/refs.database.php'>Database Extensions</a></dd>
+	<dd><a href='/manual/en/refs.calendar.php'>Date and Time Related Extensions</a></dd>
+	<dd><a href='/manual/en/refs.fileprocess.file.php'>File System Related Extensions</a></dd>
+	<dd><a href='/manual/en/refs.international.php'>Human Language and Character Encoding Support</a></dd>
+	<dd><a href='/manual/en/refs.utilspec.image.php'>Image Processing and Generation</a></dd>
+	<dd><a href='/manual/en/refs.remote.mail.php'>Mail Related Extensions</a></dd>
+	<dd><a href='/manual/en/refs.math.php'>Mathematical Extensions</a></dd>
+	<dd><a href='/manual/en/refs.utilspec.nontext.php'>Non-Text MIME Output</a></dd>
+	<dd><a href='/manual/en/refs.fileprocess.process.php'>Process Control Extensions</a></dd>
+	<dd><a href='/manual/en/refs.basic.other.php'>Other Basic Extensions</a></dd>
+	<dd><a href='/manual/en/refs.remote.other.php'>Other Services</a></dd>
+	<dd><a href='/manual/en/refs.search.php'>Search Engine Extensions</a></dd>
+	<dd><a href='/manual/en/refs.utilspec.server.php'>Server Specific Extensions</a></dd>
+	<dd><a href='/manual/en/refs.basic.session.php'>Session Extensions</a></dd>
+	<dd><a href='/manual/en/refs.basic.text.php'>Text Processing</a></dd>
+	<dd><a href='/manual/en/refs.basic.vartype.php'>Variable and Type Related Extensions</a></dd>
+	<dd><a href='/manual/en/refs.webservice.php'>Web Services</a></dd>
+	<dd><a href='/manual/en/refs.utilspec.windows.php'>Windows Only Extensions</a></dd>
+	<dd><a href='/manual/en/refs.xml.php'>XML Manipulation</a></dd>
+	<dd><a href='/manual/en/refs.ui.php'>GUI Extensions</a></dd>
+</dl>
+<dl>
+<dt>Keyboard Shortcuts</dt><dt>?</dt>
+<dd>This help</dd>
+<dt>j</dt>
+<dd>Next menu item</dd>
+<dt>k</dt>
+<dd>Previous menu item</dd>
+<dt>g p</dt>
+<dd>Previous man page</dd>
+<dt>g n</dt>
+<dd>Next man page</dd>
+<dt>G</dt>
+<dd>Scroll to bottom</dd>
+<dt>g g</dt>
+<dd>Scroll to top</dd>
+<dt>g h</dt>
+<dd>Goto homepage</dd>
+<dt>g s</dt>
+<dd>Goto search<br>(current page)</dd>
+<dt>/</dt>
+<dd>Focus search box</dd>
+</dl></div></nav>
+<div id="goto">
+    <div class="search">
+         <div class="text"></div>
+         <div class="results"><ul></ul></div>
+   </div>
+</div>
+
+  <div id="breadcrumbs" class="clearfix">
+    <div id="breadcrumbs-inner">
+          <div class="next">
+        <a href="pdo.pgsqllobunlink.php">
+          PDO::pgsqlLOBUnlink &raquo;
+        </a>
+      </div>
+              <div class="prev">
+        <a href="pdo.pgsqllobcreate.php">
+          &laquo; PDO::pgsqlLOBCreate        </a>
+      </div>
+          <ul>
+            <li><a href='index.php'>PHP Manual</a></li>      <li><a href='funcref.php'>Function Reference</a></li>      <li><a href='refs.database.php'>Database Extensions</a></li>      <li><a href='refs.database.abstract.php'>Abstraction Layers</a></li>      <li><a href='book.pdo.php'>PDO</a></li>      <li><a href='pdo.drivers.php'>PDO Drivers</a></li>      <li><a href='ref.pdo-pgsql.php'>PostgreSQL PDO Driver</a></li>      </ul>
+    </div>
+  </div>
+
+
+
+
+<div id="layout" class="clearfix">
+  <section id="layout-content">
+  <div class="page-tools">
+    <div class="change-language">
+      <form action="/manual/change.php" method="get" id="changelang" name="changelang">
+        <fieldset>
+          <label for="changelang-langs">Change language:</label>
+          <select onchange="document.changelang.submit()" name="page" id="changelang-langs">
+            <option value='en/pdo.pgsqllobopen.php' selected="selected">English</option>
+            <option value='de/pdo.pgsqllobopen.php'>German</option>
+            <option value='es/pdo.pgsqllobopen.php'>Spanish</option>
+            <option value='fr/pdo.pgsqllobopen.php'>French</option>
+            <option value='it/pdo.pgsqllobopen.php'>Italian</option>
+            <option value='ja/pdo.pgsqllobopen.php'>Japanese</option>
+            <option value='pt_BR/pdo.pgsqllobopen.php'>Brazilian Portuguese</option>
+            <option value='ru/pdo.pgsqllobopen.php'>Russian</option>
+            <option value='tr/pdo.pgsqllobopen.php'>Turkish</option>
+            <option value='uk/pdo.pgsqllobopen.php'>Ukrainian</option>
+            <option value='zh/pdo.pgsqllobopen.php'>Chinese (Simplified)</option>
+            <option value='help-translate.php'>Other</option>
+          </select>
+        </fieldset>
+      </form>
+    </div>
+  </div><div id="pdo.pgsqllobopen" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">PDO::pgsqlLOBOpen</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.1.2, PHP 7, PHP 8, PECL pdo_pgsql &gt;= 1.0.2)</p><p class="refpurpose"><span class="refname">PDO::pgsqlLOBOpen</span> &mdash; <span class="dc-title">
+   Alias of <span class="methodname"><a href="pdo-pgsql.lobopen.php" class="methodname">Pdo\Pgsql::lobOpen()</a></span>
+  </span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-pdo.pgsqllobopen-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><strong>PDO::pgsqlLOBOpen</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.string.php" class="type string">string</a></span> <code class="parameter">$oid</code></span>, <span class="methodparam"><span class="type"><a href="language.types.string.php" class="type string">string</a></span> <code class="parameter">$mode</code><span class="initializer"> = &quot;rb&quot;</span></span>): <span class="type"><span class="type"><a href="language.types.resource.php" class="type resource">resource</a></span>|<span class="type"><a href="language.types.singleton.php" class="type false">false</a></span></span></div>
+
+  <p class="simpara">
+   This method is an alias of:  <span class="methodname"><a href="pdo-pgsql.lobopen.php" class="methodname">Pdo\Pgsql::lobOpen()</a></span>.
+  </p>
+</div>
+
+</div>    <div class="contribute">
+      <h3 class="title">Found A Problem?</h3>
+      <div>
+         
+      </div>
+      <div class="edit-bug">
+        <a href="https://github.com/php/doc-base/blob/master/README.md" title="This will take you to our contribution guidelines on GitHub" target="_blank" rel="noopener noreferrer">Learn How To Improve This Page</a>
+        •
+        <a href="https://github.com/php/doc-en/blob/master/reference/pdo_pgsql/pdo_overloaded/pgsqlLOBOpen.xml">Submit a Pull Request</a>
+        •
+        <a href="https://github.com/php/doc-en/issues/new?body=From%20manual%20page:%20https:%2F%2Fphp.net%2Fpdo.pgsqllobopen%0A%0A---">Report a Bug</a>
+      </div>
+    </div><section id="usernotes">
+ <div class="head">
+  <span class="action"><a href="/manual/add-note.php?sect=pdo.pgsqllobopen&amp;repo=en&amp;redirect=https://www.php.net/manual/en/pdo.pgsqllobopen.php">＋<small>add a note</small></a></span>
+  <h3 class="title">User Contributed Notes <span class="count">3 notes</span></h3>
+ </div><div id="allnotes">
+  <div class="note" id="89398">  <div class="votes">
+    <div id="Vu89398">
+    <a href="/manual/vote-note.php?id=89398&amp;page=pdo.pgsqllobopen&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd89398">
+    <a href="/manual/vote-note.php?id=89398&amp;page=pdo.pgsqllobopen&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V89398" title="66% like this...">
+    1
+    </div>
+  </div>
+  <a href="#89398" class="name">
+  <strong class="user"><em>binaryexp at gmail</em></strong></a><a class="genanchor" href="#89398"> &para;</a><div class="date" title="2009-03-05 04:54"><strong>16 years ago</strong></div>
+  <div class="text" id="Hcom89398">
+<div class="phpcode"><code><span class="html">This is what worked for me. If you have the oid, then all you need to do is:<br /><br /><span class="default">&lt;?php<br />$pdo </span><span class="keyword">= new </span><span class="default">PDO</span><span class="keyword">(</span><span class="default">$dsn</span><span class="keyword">, </span><span class="default">$user</span><span class="keyword">, </span><span class="default">$pass</span><span class="keyword">);<br /></span><span class="default">$pdo</span><span class="keyword">-&gt;</span><span class="default">beginTransaction</span><span class="keyword">();<br /></span><span class="default">$data </span><span class="keyword">= </span><span class="default">$pdo</span><span class="keyword">-&gt;</span><span class="default">pgsqlLOBOpen</span><span class="keyword">(</span><span class="default">$oid</span><span class="keyword">, </span><span class="string">'r'</span><span class="keyword">);<br /><br /></span><span class="default">header</span><span class="keyword">(</span><span class="string">"Content-Type: </span><span class="default">$mime</span><span class="string">"</span><span class="keyword">);<br /></span><span class="comment">// any other headers...<br /><br /></span><span class="default">fpassthru</span><span class="keyword">(</span><span class="default">$data</span><span class="keyword">);  </span><span class="comment">// echo stream_get_contents($data); also works<br /></span><span class="default">?&gt;<br /></span><br />The beginTransaction() is required, if you want to $pdo-&gt;commit() (it's not required) then do it after the fpassthru.<br /><br />On a side note, those using Zend Framework can call getConnection() on the standard PDO database object which will get them the $pdo object as above. Then just remember to disableLayout() and setNoRender() as necessary.</span></code></div>
+  </div>
+ </div>
+  <div class="note" id="85952">  <div class="votes">
+    <div id="Vu85952">
+    <a href="/manual/vote-note.php?id=85952&amp;page=pdo.pgsqllobopen&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd85952">
+    <a href="/manual/vote-note.php?id=85952&amp;page=pdo.pgsqllobopen&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V85952" title="no votes...">
+    0
+    </div>
+  </div>
+  <a href="#85952" class="name">
+  <strong class="user"><em>knl at bitflop dot com</em></strong></a><a class="genanchor" href="#85952"> &para;</a><div class="date" title="2008-09-25 05:54"><strong>17 years ago</strong></div>
+  <div class="text" id="Hcom85952">
+<div class="phpcode"><code><span class="html">Also remember that fread() will only parse the first 8192 bytes from the stream. Use..<br /><br /><span class="default">&lt;?php<br />$data </span><span class="keyword">= </span><span class="default">stream_get_contents</span><span class="keyword">(</span><span class="default">$stream</span><span class="keyword">);<br /></span><span class="default">?&gt;<br /></span><br />.. if you have a larger output to parse.</span></code></div>
+  </div>
+ </div>
+  <div class="note" id="85945">  <div class="votes">
+    <div id="Vu85945">
+    <a href="/manual/vote-note.php?id=85945&amp;page=pdo.pgsqllobopen&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd85945">
+    <a href="/manual/vote-note.php?id=85945&amp;page=pdo.pgsqllobopen&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V85945" title="no votes...">
+    0
+    </div>
+  </div>
+  <a href="#85945" class="name">
+  <strong class="user"><em>knl at bitflop dot com</em></strong></a><a class="genanchor" href="#85945"> &para;</a><div class="date" title="2008-09-25 03:20"><strong>17 years ago</strong></div>
+  <div class="text" id="Hcom85945">
+<div class="phpcode"><code><span class="html">The above example is missing some data. After spending several hours trying to get it to work in vain, Jeff Davis from the PostgreSQL channel on IRC (freenode) figured out what was missing.<br /><br />The below example will work, but you have to insert the MIME type and file size of the large object that you are storing, so you can use that data for extraction.<br /><br /><span class="default">&lt;?php<br />$db </span><span class="keyword">= new </span><span class="default">PDO</span><span class="keyword">(</span><span class="string">'pgsql:dbname=test host=localhost'</span><span class="keyword">, </span><span class="default">$user</span><span class="keyword">, </span><span class="default">$pass</span><span class="keyword">);<br /></span><span class="default">$db</span><span class="keyword">-&gt;</span><span class="default">setAttribute</span><span class="keyword">(</span><span class="default">PDO</span><span class="keyword">::</span><span class="default">ATTR_ERRMODE</span><span class="keyword">, </span><span class="default">PDO</span><span class="keyword">::</span><span class="default">ERRMODE_EXCEPTION</span><span class="keyword">);<br /></span><span class="default">$db</span><span class="keyword">-&gt;</span><span class="default">beginTransaction</span><span class="keyword">();<br /></span><span class="default">$stmt </span><span class="keyword">= </span><span class="default">$db</span><span class="keyword">-&gt;</span><span class="default">prepare</span><span class="keyword">(</span><span class="string">"SELECT oid, blob_type, filesize FROM BLOBS WHERE ident = ?"</span><span class="keyword">);<br /></span><span class="default">$stmt</span><span class="keyword">-&gt;</span><span class="default">execute</span><span class="keyword">(array(</span><span class="default">$some_id</span><span class="keyword">));<br /></span><span class="default">$stmt</span><span class="keyword">-&gt;</span><span class="default">bindColumn</span><span class="keyword">(</span><span class="string">'oid'</span><span class="keyword">, </span><span class="default">$lob</span><span class="keyword">, </span><span class="default">PDO</span><span class="keyword">::</span><span class="default">PARAM_LOB</span><span class="keyword">);<br /></span><span class="default">$stmt</span><span class="keyword">-&gt;</span><span class="default">bindColumn</span><span class="keyword">(</span><span class="string">'blob_type'</span><span class="keyword">, </span><span class="default">$blob_type</span><span class="keyword">, </span><span class="default">PDO</span><span class="keyword">::</span><span class="default">PARAM_STR</span><span class="keyword">);<br /></span><span class="default">$stmt</span><span class="keyword">-&gt;</span><span class="default">bindColumn</span><span class="keyword">(</span><span class="string">'filesize'</span><span class="keyword">, </span><span class="default">$filesize</span><span class="keyword">, </span><span class="default">PDO</span><span class="keyword">::</span><span class="default">PARAM_STR</span><span class="keyword">);<br /></span><span class="default">$stmt</span><span class="keyword">-&gt;</span><span class="default">fetch</span><span class="keyword">(</span><span class="default">PDO</span><span class="keyword">::</span><span class="default">FETCH_BOUND</span><span class="keyword">);<br /></span><span class="default">$stream </span><span class="keyword">= </span><span class="default">$pdo</span><span class="keyword">-&gt;</span><span class="default">pgsqlLOBOpen</span><span class="keyword">(</span><span class="default">$lob</span><span class="keyword">, </span><span class="string">'r'</span><span class="keyword">);<br /></span><span class="default">$data </span><span class="keyword">= </span><span class="default">fread</span><span class="keyword">(</span><span class="default">$stream</span><span class="keyword">, </span><span class="default">$filesize</span><span class="keyword">);<br /></span><span class="default">header</span><span class="keyword">(</span><span class="string">"Content-type: </span><span class="default">$blob_type</span><span class="string">"</span><span class="keyword">);<br />echo </span><span class="default">$data</span><span class="keyword">;<br /></span><span class="default">?&gt;<br /></span><br />Also fpassthru() will just give this result: Warning: fpassthru(): supplied argument is not a valid stream resource in ...<br /><br />Use echo or print instead.</span></code></div>
+  </div>
+ </div></div>
+<div class="foot"><a href="/manual/add-note.php?sect=pdo.pgsqllobopen&amp;repo=en&amp;redirect=https://www.php.net/manual/en/pdo.pgsqllobopen.php">＋<small>add a note</small></a></div>
+</section>    </section><!-- layout-content -->
+        <aside class='layout-menu'>
+
+        <ul class='parent-menu-list'>
+                                    <li>
+                <a href="ref.pdo-pgsql.php">PostgreSQL PDO Driver</a>
+
+                                    <ul class='child-menu-list'>
+
+                                                <li class="">
+                            <a href="ref.pdo-pgsql.connection.php" title="PDO_&#8203;PGSQL DSN">PDO_&#8203;PGSQL DSN</a>
+                        </li>
+                                                <li class="">
+                            <a href="pdo.pgsqlcopyfromarray.php" title="pgsqlCopyFromArray">pgsqlCopyFromArray</a>
+                        </li>
+                                                <li class="">
+                            <a href="pdo.pgsqlcopyfromfile.php" title="pgsqlCopyFromFile">pgsqlCopyFromFile</a>
+                        </li>
+                                                <li class="">
+                            <a href="pdo.pgsqlcopytoarray.php" title="pgsqlCopyToArray">pgsqlCopyToArray</a>
+                        </li>
+                                                <li class="">
+                            <a href="pdo.pgsqlcopytofile.php" title="pgsqlCopyToFile">pgsqlCopyToFile</a>
+                        </li>
+                                                <li class="">
+                            <a href="pdo.pgsqlgetnotify.php" title="pgsqlGetNotify">pgsqlGetNotify</a>
+                        </li>
+                                                <li class="">
+                            <a href="pdo.pgsqlgetpid.php" title="pgsqlGetPid">pgsqlGetPid</a>
+                        </li>
+                                                <li class="">
+                            <a href="pdo.pgsqllobcreate.php" title="pgsqlLOBCreate">pgsqlLOBCreate</a>
+                        </li>
+                                                <li class="current">
+                            <a href="pdo.pgsqllobopen.php" title="pgsqlLOBOpen">pgsqlLOBOpen</a>
+                        </li>
+                                                <li class="">
+                            <a href="pdo.pgsqllobunlink.php" title="pgsqlLOBUnlink">pgsqlLOBUnlink</a>
+                        </li>
+                        
+                    </ul>
+                
+            </li>
+                        
+                    </ul>
+    </aside>
+
+
+  </div><!-- layout -->
+
+  <footer>
+    <div class="container footer-content">
+      <div class="row-fluid">
+      <ul class="footmenu">
+        <li><a href="/manual/en/copyright.php">Copyright &copy; 2001-2025 The PHP Documentation Group</a></li>
+        <li><a href="/my.php">My PHP.net</a></li>
+        <li><a href="/contact.php">Contact</a></li>
+        <li><a href="/sites.php">Other PHP.net sites</a></li>
+        <li><a href="/privacy.php">Privacy policy</a></li>
+      </ul>
+      </div>
+    </div>
+  </footer>
+
+    
+<script src="/manual/en/js/ext/jquery-3.6.0.min.js"></script>
+<script src="/manual/en/js/ext/FuzzySearch.min.js"></script>
+<script src="/manual/en/js/ext/mousetrap.min.js"></script>
+<script src="/manual/en/js/ext/jquery.scrollTo.min.js"></script>
+<script src="/manual/en/js/search.js"></script>
+<script src="/manual/en/js/common.js"></script>
+<script type="module" src="/manual/en/js/interactive-examples.js"></script>
+
+<a id="toTop" href="javascript:;"><span id="toTopHover"></span><img width="40" height="40" alt="To Top" src="/images/to-top@2x.png"></a>
+
+<div id="search-modal__backdrop" class="search-modal__backdrop">
+  <div
+    role="dialog"
+    aria-label="Search modal"
+    id="search-modal"
+    class="search-modal"
+  >
+    <div class="search-modal__header">
+      <div class="search-modal__form">
+        <div class="search-modal__input-icon">
+          <!-- https://feathericons.com search -->
+          <svg xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+            width="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </div>
+        <input
+          type="search"
+          id="search-modal__input"
+          class="search-modal__input"
+          placeholder="Search docs"
+          aria-label="Search docs"
+        />
+      </div>
+
+      <button aria-label="Close" class="search-modal__close">
+        <!-- https://pictogrammers.com/library/mdi/icon/close/ -->
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+          width="24"
+          viewBox="0 0 24 24"
+        >
+          <path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"/>
+        </svg>
+      </button>
+    </div>
+    <div
+      role="listbox"
+      aria-label="Search results"
+      id="search-modal__results"
+      class="search-modal__results"
+    ></div>
+    <div class="search-modal__helper-text">
+      <div>
+        <kbd>↑</kbd> and <kbd>↓</kbd> to navigate •
+        <kbd>Enter</kbd> to select •
+        <kbd>Esc</kbd> to close
+      </div>
+      <div>
+        Press <kbd>Enter</kbd> without
+        selection to search using Google
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
